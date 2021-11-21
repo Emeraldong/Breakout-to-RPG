@@ -26,9 +26,9 @@ public class Brick2 extends Brick {
         return new Rectangle(pos,size);
     }
 
-    @Override
+    //@Override
     public Shape getBrick() {
-        return super.brickFace;
+        return getBrickFace();
     }
 
 

@@ -8,6 +8,10 @@ import java.util.Random;
 
 abstract public class Brick  {
 
+    public Shape getBrickFace() {
+        return brickFace;
+    }
+
     public static final int MIN_CRACK = 1;
     public static final int MAX_CRACK = 3;
     public static final int DEF_CRACK_DEPTH = 1;
@@ -21,7 +25,7 @@ abstract public class Brick  {
 
 
 
-    public class Crack{
+    /*public class Crack{
 
         private static final int CRACK_SECTIONS = 3;
         private static final double JUMP_PROBABILITY = 0.7;
@@ -169,12 +173,15 @@ abstract public class Brick  {
             return out;
         }
 
-    }
+    }*/
 
-    private static Random rnd;
+    //private static Random rnd;
 
     private String name;
-    Shape brickFace;
+
+
+
+    private Shape brickFace;
 
     private Color border;
     private Color inner;
@@ -186,7 +193,7 @@ abstract public class Brick  {
 
 
     public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
-        rnd = new Random();
+        Random rnd = new Random();
         broken = false;
         this.name = name;
         brickFace = makeBrickFace(pos,size);
@@ -194,6 +201,9 @@ abstract public class Brick  {
         this.inner = inner;
         this.fullStrength = this.strength = strength;
 
+    }
+
+    protected Brick() {
     }
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
