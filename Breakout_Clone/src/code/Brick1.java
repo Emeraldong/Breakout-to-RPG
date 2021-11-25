@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 
 public class Brick1 extends Brick{
 
-
+    private Brick crackAddict;
     private static final String NAME = "Cement Brick";
     private static final Color DEF_INNER = new Color(147, 147, 147);
     private static final Color DEF_BORDER = new Color(217, 199, 175);
@@ -19,7 +19,7 @@ public class Brick1 extends Brick{
 
     public Brick1(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CEMENT_STRENGTH);
-        crack = new Crack(DEF_CRACK_DEPTH,DEF_STEPS);
+        crack = new Crack(DEF_CRACK_DEPTH,DEF_STEPS,this);
         brickFace = super.getBrickFace();
     }
 

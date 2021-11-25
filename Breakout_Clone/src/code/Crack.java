@@ -6,12 +6,10 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 
-public class Crack extends Brick{
+public class Crack{
 
-    public Shape getBrick() {
-        return brickFace;
-    }
-    private Shape brickFace = getBrickFace();
+    private Brick thisBrickIsForTheStinkingMakeCrackMethod;
+    private Shape brickFace;
     private static Random rnd;
     private static final int CRACK_SECTIONS = 3;
     private static final double JUMP_PROBABILITY = 0.7;
@@ -30,7 +28,9 @@ public class Crack extends Brick{
     private final int steps;
 
 
-    public Crack(int crackDepth, int steps) {
+    public Crack(int crackDepth, int steps, Brick callingBrick) {
+        rnd = new Random();
+        thisBrickIsForTheStinkingMakeCrackMethod = callingBrick;
 
         crack = new GeneralPath();
         this.crackDepth = crackDepth;
@@ -49,8 +49,8 @@ public class Crack extends Brick{
     }
 
     protected void makeCrack(Point2D point, int direction) {
-
-        Rectangle bounds = this.brickFace.getBounds();
+        Rectangle bounds = thisBrickIsForTheStinkingMakeCrackMethod.getBrickFace().getBounds();
+        int randomNumber=rnd.nextInt();
 
         Point impact = new Point((int) point.getX(), (int) point.getY());
         Point start = new Point();
@@ -141,7 +141,6 @@ public class Crack extends Brick{
     }
 
     public Point makeRandomPoint(Point from, Point to, int direction) {
-
         Point out = new Point();
         int pos;
 
@@ -156,11 +155,5 @@ public class Crack extends Brick{
                 break;
         }
         return out;
-    }
-
-
-    @Override
-    protected Shape makeBrickFace(Point pos, Dimension size) {
-        return null;
     }
 }
