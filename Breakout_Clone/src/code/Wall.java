@@ -200,7 +200,6 @@ public class Wall{
 
     public boolean impactBorder(){
         Point2D p = ball.getPosition();
-        System.out.println(p.getX());
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
         //returns true if ball is detected to be outside the play area.
     }
