@@ -40,8 +40,9 @@ public class Wall{
         rnd = new Random();
 
         makeBall(ballPos);
-        int speedX,speedY;
-        do{
+        player = new Paddle((Point) ballPos.clone(),150,10, drawArea);
+        ballReset();
+        /*do{
             speedX = rnd.nextInt(6) + 6; //originally, bound was 5 and offset was -2
         }while(speedX == 0);
         do{
@@ -50,7 +51,7 @@ public class Wall{
 
         ball.setSpeed(speedX,speedY);
 
-        player = new Paddle((Point) ballPos.clone(),150,10, drawArea);
+        player = new Paddle((Point) ballPos.clone(),150,10, drawArea); */
 
         area = drawArea;
 
@@ -199,7 +200,9 @@ public class Wall{
 
     public boolean impactBorder(){
         Point2D p = ball.getPosition();
+        System.out.println(p.getX());
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
+        //returns true if ball is detected to be outside the play area.
     }
 
     public int getBrickCount(){
@@ -214,7 +217,7 @@ public class Wall{
         return ballLost;
     }
 
-    public void ballReset(){
+    public void ballReset(){    //note to self: try reusing code from the other one
         player.moveTo(startPoint);
         ball.moveTo(startPoint);
         int speedX,speedY;
