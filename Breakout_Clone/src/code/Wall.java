@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Wall{
 
-    public static final int LEVELS_COUNT = 4;
+    //public static final int LEVELS_COUNT = 4;
 
     private static final int CLAY = 1;
     private static final int STEEL = 2;
@@ -27,11 +27,12 @@ public class Wall{
     private int ballCount;
     private boolean ballLost;
 
+
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
-
-        levels = makeLevels(drawArea,brickCount,lineCount,brickDimensionRatio);
+        GameInitialization gameInitializer = new GameInitialization(this);
+        levels = gameInitializer.makeLevels(drawArea,brickCount,lineCount,brickDimensionRatio);
         level = 0;
 
         ballCount = 3;
@@ -39,7 +40,7 @@ public class Wall{
 
         rnd = new Random();
 
-        makeBall(ballPos);
+        gameInitializer.makeBall(ballPos);
         player = new Paddle((Point) ballPos.clone(),150,10, drawArea);
         ballReset();
         /*do{
@@ -58,7 +59,7 @@ public class Wall{
 
     }
 
-    public Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
+    /*public Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
         // if brickCount is not divisible by line count,brickCount is adjusted to the biggest multiple of lineCount smaller then brickCount
         brickCnt -= brickCnt % lineCnt;
 
@@ -148,7 +149,7 @@ public class Wall{
         tmp[2] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
         tmp[3] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
         return tmp;
-    }
+    } */
 
     public void move(){
         player.move();
