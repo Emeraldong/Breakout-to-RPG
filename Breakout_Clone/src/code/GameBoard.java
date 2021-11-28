@@ -7,7 +7,7 @@ import java.awt.font.FontRenderContext;
 
 
 
-public class GameBoard extends JComponent implements MouseListener,MouseMotionListener { //originally used KeyListener also
+public class GameBoard extends JComponent { //originally used KeyListener, MouseListener and MouseMotionListener also
 
     private static final String CONTINUE = "Continue";
     private static final String RESTART = "Restart";
@@ -27,6 +27,7 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
     private Wall wall;
 
     private KeyDetector keyDetector;
+    private MouseDetector mouseDetector;
 
     private String message;
 
@@ -35,6 +36,8 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
     private Font menuFont;
 
     private Rectangle continueButtonRect;
+
+
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private int strLen;
@@ -62,6 +65,23 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
         return debugConsole;
     }
 
+    public Rectangle getContinueButtonRect() {
+        return continueButtonRect;
+    }
+
+    public Rectangle getRestartButtonRect() {
+        return restartButtonRect;
+    }
+
+    public Rectangle getExitButtonRect() {
+        return exitButtonRect;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+
     public GameBoard(JFrame owner){
         super();
 
@@ -75,6 +95,7 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
 
         wall = new Wall(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
         keyDetector = new KeyDetector(this);
+        mouseDetector = new MouseDetector(this);
         this.initialize();
         message = "Press SPACE to start";
 
@@ -121,9 +142,9 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
         this.setFocusable(true);
         this.requestFocusInWindow();
         this.addKeyListener(keyDetector);
-        this.addMouseListener(this);
-        this.addMouseListener(this);
-        this.addMouseMotionListener(this);
+        this.addMouseListener(mouseDetector);
+        //this.addMouseListener(this);
+        this.addMouseMotionListener(mouseDetector);
     }
 
 
@@ -307,7 +328,7 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
         wall.player.stop();
     } */
 
-    @Override
+    /*@Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
         if(!showPauseMenu)
@@ -366,7 +387,7 @@ public class GameBoard extends JComponent implements MouseListener,MouseMotionLi
         else{
             this.setCursor(Cursor.getDefaultCursor());
         }
-    }
+    } */
 
     public void onLostFocus(){
         gameTimer.stop();
