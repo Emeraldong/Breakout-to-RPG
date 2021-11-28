@@ -14,7 +14,7 @@ public class GameInitialization {
     private static final int CEMENT = 3;
 
     public GameInitialization(Wall wall){
-        wallPrime=wall;
+        wallPrime = wall;
     }
 
     public Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){

@@ -21,6 +21,40 @@ abstract public class Ball {
     private int speedX;
     private int speedY;
 
+    public Color getBorderColor(){
+        return border;
+    }
+
+    public Color getInnerColor(){
+        return inner;
+    }
+
+    public Point2D getPosition(){
+        return center;
+    }
+
+    public Shape getBallFace(){
+        return ballFace;
+    }
+
+    public int getSpeedX() {return speedX;}
+
+    public int getSpeedY() {return speedY;}
+
+    public void setSpeed(int x,int y){
+        speedX = x;
+        speedY = y;
+    }
+
+    public void setXSpeed(int s){
+        speedX = s;
+    }
+
+    public void setYSpeed(int s){
+        speedY = s;
+    }
+
+
     public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
         this.center = center;
 
@@ -58,41 +92,12 @@ abstract public class Ball {
         ballFace = tmp;
     }
 
-    public void setSpeed(int x,int y){
-        speedX = x;
-        speedY = y;
-    }
-
-    public void setXSpeed(int s){
-        speedX = s;
-    }
-
-    public void setYSpeed(int s){
-        speedY = s;
-    }
-
     public void reverseX(){
         speedX *= -1;
     }
 
     public void reverseY(){
         speedY *= -1;
-    }
-
-    public Color getBorderColor(){
-        return border;
-    }
-
-    public Color getInnerColor(){
-        return inner;
-    }
-
-    public Point2D getPosition(){
-        return center;
-    }
-
-    public Shape getBallFace(){
-        return ballFace;
     }
 
     public void moveTo(Point p){
@@ -113,14 +118,5 @@ abstract public class Ball {
         left.setLocation(center.getX()-(width / 2),center.getY());
         right.setLocation(center.getX()+(width / 2),center.getY());
     }
-
-    public int getSpeedX(){
-        return speedX;
-    }
-
-    public int getSpeedY(){
-        return speedY;
-    }
-
 
 }

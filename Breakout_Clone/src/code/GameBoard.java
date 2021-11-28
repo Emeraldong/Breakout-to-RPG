@@ -7,7 +7,7 @@ import java.awt.font.FontRenderContext;
 
 
 
-public class GameBoard extends JComponent implements KeyListener,MouseListener,MouseMotionListener {
+public class GameBoard extends JComponent implements MouseListener,MouseMotionListener { //originally used KeyListener also
 
     private static final String CONTINUE = "Continue";
     private static final String RESTART = "Restart";
@@ -26,6 +26,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private Wall wall;
 
+    private KeyDetector keyDetector;
+
     private String message;
 
     private boolean showPauseMenu;
@@ -39,6 +41,26 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private DebugConsole debugConsole;
 
+    public Wall getWall() {
+        return wall;
+    }
+
+    public boolean isShowPauseMenu() {
+        return showPauseMenu;
+    }
+
+    public void setShowPauseMenu(boolean showPauseMenu) {
+        this.showPauseMenu = showPauseMenu;
+    }
+
+
+    public Timer getGameTimer() {
+        return gameTimer;
+    }
+
+    public DebugConsole getDebugConsole() {
+        return debugConsole;
+    }
 
     public GameBoard(JFrame owner){
         super();
@@ -51,9 +73,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
 
 
+        wall = new Wall(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
+        keyDetector = new KeyDetector(this);
         this.initialize();
         message = "Press SPACE to start";
-        wall = new Wall(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
+
 
         debugConsole = new DebugConsole(owner,wall,this);
         //initialize the first level
@@ -96,7 +120,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
         this.setFocusable(true);
         this.requestFocusInWindow();
-        this.addKeyListener(this);
+        this.addKeyListener(keyDetector);
+        this.addMouseListener(this);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
     }
@@ -246,7 +271,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setColor(tmpColor);
     }
 
-    @Override
+    /*@Override
     public void keyTyped(KeyEvent keyEvent) {
     }
 
@@ -280,7 +305,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         wall.player.stop();
-    }
+    } */
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {

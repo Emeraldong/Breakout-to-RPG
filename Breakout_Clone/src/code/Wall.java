@@ -222,10 +222,10 @@ public class Wall{
         ball.moveTo(startPoint);
         int speedX,speedY;
         do{
-            speedX = rnd.nextInt(5) - 2;
+            speedX = rnd.nextInt(3) + 2; //originally 5 with offset -2
         }while(speedX == 0);
         do{
-            speedY = -rnd.nextInt(3);
+            speedY = -rnd.nextInt(3) - 2; //originally without the offset
         }while(speedY == 0);
 
         ball.setSpeed(speedX,speedY);
