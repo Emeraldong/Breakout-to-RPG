@@ -147,7 +147,7 @@ public class GameBoard extends JComponent { //originally used KeyListener, Mouse
         this.addMouseMotionListener(mouseDetector);
     }
 
-
+    @Override
     public void paint(Graphics g){
 
         Graphics2D g2d = (Graphics2D) g;
