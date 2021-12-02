@@ -6,21 +6,28 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
+import code.Views.*;
 
 
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     public static final String DEF_TITLE = "Breakout Clone     space = start/pause   ←/→ = move left/right   esc = menu";
     private GameBoard gameBoard;
+    private MainMenuScreen menuScreen;
+    private CardLayout cardLayout;
     private boolean gaming;
 
     public GameFrame(){
         super();
         gaming = false;
-        this.setLayout(new BorderLayout());
+        cardLayout = new CardLayout();
+        this.setLayout(cardLayout); //originally this.setLayout(new BorderLayout());
+        menuScreen = new MainMenuScreen();
         gameBoard = new GameBoard(this);
-        this.add(gameBoard,BorderLayout.CENTER);
+        this.add(menuScreen,"menu");
+        this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
         initialize();
+        cardLayout.show(this.getContentPane(),"menu");
         this.addWindowFocusListener(this);
     }
 
