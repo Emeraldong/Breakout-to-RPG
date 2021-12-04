@@ -12,23 +12,39 @@ import code.Views.*;
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     public static final String DEF_TITLE = "Breakout Clone     space = start/pause   ←/→ = move left/right   esc = menu";
+
+    public GameBoard getGameBoard() {
+        return gameBoard;
+    }
+
     private GameBoard gameBoard;
     private MainMenuScreen menuScreen;
     private CardLayout cardLayout;
     private boolean gaming;
+
+
+    public CardLayout getCardLayout() {
+        return cardLayout;
+    }
+
+    public void setCardLayout(CardLayout cardLayout) {
+        this.cardLayout = cardLayout;
+    }
+
 
     public GameFrame(){
         super();
         gaming = false;
         cardLayout = new CardLayout();
         this.setLayout(cardLayout); //originally this.setLayout(new BorderLayout());
-        menuScreen = new MainMenuScreen();
+        menuScreen = new MainMenuScreen(this);
         gameBoard = new GameBoard(this);
         this.add(menuScreen,"menu");
         this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
         initialize();
-        cardLayout.show(this.getContentPane(),"menu");
         this.addWindowFocusListener(this);
+        cardLayout.show(this.getContentPane(),"menu");
+
     }
 
     public void initialize(){
