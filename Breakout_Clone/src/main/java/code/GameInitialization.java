@@ -97,7 +97,7 @@ public class GameInitialization {
     }
 
     public void makeBall(Point2D ballPos){
-        wallPrime.ball = new Ball1(ballPos);
+        wallPrime.setBall(new Ball1(ballPos));
     }
 
     public Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){

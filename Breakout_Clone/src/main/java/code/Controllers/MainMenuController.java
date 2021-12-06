@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 
 import code.GameFrame;
 
-public class MainMenuListener implements ActionListener {
+public class MainMenuController implements ActionListener {
 
     private GameFrame gameFrame;
 
-    public MainMenuListener(GameFrame owner){
+    public MainMenuController(GameFrame owner){
         gameFrame = owner;
     }
 

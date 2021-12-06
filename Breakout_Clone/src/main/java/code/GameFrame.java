@@ -37,11 +37,15 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gaming = false;
         cardLayout = new CardLayout();
         this.setLayout(cardLayout); //originally this.setLayout(new BorderLayout());
+
+
         menuScreen = new MainMenuScreen(this);
         gameBoard = new GameBoard(this);
         this.add(menuScreen,"menu");
         this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
         initialize();
+
+
         this.addWindowFocusListener(this);
         cardLayout.show(this.getContentPane(),"menu");
 

@@ -6,19 +6,19 @@ import java.awt.*;
 import java.io.IOException;
 
 import code.*;
-import code.Controllers.MainMenuListener;
+import code.Controllers.MainMenuController;
 
 public class MainMenuScreen extends JPanel{
 
     private JButton start, settings, exit, about;
     Image img, mainText;
 
-    private MainMenuListener menuListener;
+    private MainMenuController menuListener;
 
     public MainMenuScreen(GameFrame owner){
         super();
 
-        this.menuListener = new MainMenuListener(owner);
+        this.menuListener = new MainMenuController(owner);
         add(new JLabel("BRICK BREAKER"));
 
         try {

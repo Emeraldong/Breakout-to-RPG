@@ -20,10 +20,10 @@ public class KeyDetector implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code=e.getKeyCode();
         if(code==KeyEvent.VK_LEFT){
-            gameBoard.getWall().player.moveLeft();
+            gameBoard.getWall().getPlayer().moveLeft();
         }
         if(code==KeyEvent.VK_RIGHT){
-            gameBoard.getWall().player.moveRight();
+            gameBoard.getWall().getPlayer().moveRight();
         }
         if(code==KeyEvent.VK_SPACE){
             if(!gameBoard.isShowPauseMenu())
@@ -45,6 +45,6 @@ public class KeyDetector implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        gameBoard.getWall().player.stop();
+        gameBoard.getWall().getPlayer().stop();
     }
 }
