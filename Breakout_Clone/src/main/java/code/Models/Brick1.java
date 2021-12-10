@@ -1,11 +1,11 @@
-package code;
+package code.Models;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
 
-public class Brick1 extends Brick{
+public class Brick1 extends Brick {
 
     private Brick crackAddict;
     private static final String NAME = "Cement Brick";

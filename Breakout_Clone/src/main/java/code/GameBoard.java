@@ -1,11 +1,14 @@
 package code;
 
+import code.Controllers.KeyDetector;
+import code.Controllers.MouseDetector;
+import code.Models.Wall;
+import code.Views.DebugConsole;
 import code.Views.PauseScreenHandler;
 import code.Views.PrimaryPainter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.font.FontRenderContext;
 
 public class GameBoard extends JPanel { //originally used KeyListener, MouseListener and MouseMotionListener also
 
@@ -112,7 +115,6 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         wall.nextLevel();
 
         gameTimer = new Timer(10,e ->{
-            System.out.println("in gameboard");
             wall.move();
             wall.findImpacts();
             message = String.format("Bricks: %d Balls %d",wall.getBrickCount(),wall.getBallCount());
@@ -138,7 +140,7 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
                 }
             }
 
-            pauseScreen.updater(this);
+            pauseScreen.updater(this, message);
         });
 
     }

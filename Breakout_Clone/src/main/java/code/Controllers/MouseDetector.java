@@ -1,4 +1,6 @@
-package code;
+package code.Controllers;
+
+import code.GameBoard;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

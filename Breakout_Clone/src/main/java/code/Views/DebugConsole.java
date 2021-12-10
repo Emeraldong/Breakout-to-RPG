@@ -1,4 +1,9 @@
-package code;
+package code.Views;
+
+import code.GameBoard;
+import code.Models.Ball;
+import code.Models.Wall;
+import code.Views.DebugPanel;
 
 import javax.swing.*;
 import java.awt.*;

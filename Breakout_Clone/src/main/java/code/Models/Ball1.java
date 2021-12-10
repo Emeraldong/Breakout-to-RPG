@@ -1,4 +1,6 @@
-package code;
+package code.Models;
+
+import code.Models.Ball;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;

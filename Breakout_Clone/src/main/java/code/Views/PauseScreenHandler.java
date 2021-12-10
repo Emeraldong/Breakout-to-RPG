@@ -1,9 +1,9 @@
 package code.Views;
 
-import code.Ball;
-import code.Brick;
+import code.Models.Ball;
+import code.Models.Brick;
 import code.GameBoard;
-import code.Paddle;
+import code.Models.Paddle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,15 +57,15 @@ public class PauseScreenHandler extends JPanel {
         this.setFocusable(true);
     }
 
-    public void updater(GameBoard owner){
+    public void updater(GameBoard owner,String message){
         myOwner = owner;
+        this.message=message;
         repaint();
     }
 
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        System.out.println("in painter");
         Graphics2D g2d = (Graphics2D) g;
 
         clear(g2d);

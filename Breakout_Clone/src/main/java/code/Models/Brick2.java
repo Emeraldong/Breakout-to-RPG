@@ -1,8 +1,9 @@
-package code;
+package code.Models;
+
+import code.Models.Brick;
 
 import java.awt.*;
 import java.awt.Point;
-import java.awt.geom.Point2D;
 
 
 public class Brick2 extends Brick {

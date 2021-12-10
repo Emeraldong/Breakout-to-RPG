@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-import code.*;
 import code.Controllers.MainMenuController;
 
 public class MainMenuScreen extends JPanel{

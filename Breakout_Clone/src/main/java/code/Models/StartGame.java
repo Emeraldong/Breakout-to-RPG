@@ -1,7 +1,8 @@
-package code;
+package code.Models;
+
+import code.Views.GameFrame;
 
 import java.awt.*;
-import java.awt.desktop.AppEvent;
 
 public class StartGame {
 

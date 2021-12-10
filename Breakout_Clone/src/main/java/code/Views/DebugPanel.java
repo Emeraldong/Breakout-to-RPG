@@ -1,4 +1,6 @@
-package code;
+package code.Views;
+
+import code.Models.Wall;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;

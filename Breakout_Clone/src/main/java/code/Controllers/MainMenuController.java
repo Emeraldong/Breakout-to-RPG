@@ -4,7 +4,7 @@ package code.Controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import code.GameFrame;
+import code.Views.GameFrame;
 
 public class MainMenuController implements ActionListener {
 

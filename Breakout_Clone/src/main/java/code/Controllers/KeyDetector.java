@@ -1,4 +1,6 @@
-package code;
+package code.Controllers;
+
+import code.GameBoard;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;

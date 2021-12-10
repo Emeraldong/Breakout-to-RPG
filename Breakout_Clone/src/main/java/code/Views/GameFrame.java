@@ -1,4 +1,4 @@
-package code;
+package code.Views;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,6 +6,8 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
+
+import code.GameBoard;
 import code.Views.*;
 
 

@@ -1,4 +1,6 @@
-package code;
+package code.Models;
+
+import code.Models.Ball;
 
 import java.awt.*;
 
@@ -33,7 +35,7 @@ public class Paddle {
     }
 
     public boolean impact(Ball b){
-        return paddleFace.contains(b.getPosition()) && paddleFace.contains(b.down) ;
+        return paddleFace.contains(b.getPosition()) && paddleFace.contains(b.getDown()) ;
     }
 
     public void move(){
