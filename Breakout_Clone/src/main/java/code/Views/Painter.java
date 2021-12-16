@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.font.FontRenderContext;
 
 
-public class PauseScreenHandler extends JPanel {
+public class Painter extends JPanel {
 
     private GameBoard myOwner;
 
@@ -48,7 +48,7 @@ public class PauseScreenHandler extends JPanel {
     }
 
 
-    public PauseScreenHandler(GameBoard owner,String message){
+    public Painter(GameBoard owner, String message){
         myOwner = owner;
         this.message = message;
         strLen = 0;

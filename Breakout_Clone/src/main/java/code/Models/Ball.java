@@ -10,22 +10,6 @@ abstract public class Ball {
 
     private Point2D center;
 
-    public Point2D getUp() {
-        return up;
-    }
-
-    public Point2D getDown() {
-        return down;
-    }
-
-    public Point2D getLeft() {
-        return left;
-    }
-
-    public Point2D getRight() {
-        return right;
-    }
-
     private Point2D up;
     private Point2D down;
     private Point2D left;
@@ -56,6 +40,22 @@ abstract public class Ball {
     public int getSpeedX() {return speedX;}
 
     public int getSpeedY() {return speedY;}
+
+    public Point2D getUp() {
+        return up;
+    }
+
+    public Point2D getDown() {
+        return down;
+    }
+
+    public Point2D getLeft() {
+        return left;
+    }
+
+    public Point2D getRight() {
+        return right;
+    }
 
     public void setSpeed(int x,int y){
         speedX = x;

@@ -38,6 +38,9 @@ abstract public class Brick  {
 
     private boolean broken;
 
+    public final boolean isBroken(){
+        return broken;
+    }
 
     public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         broken = false;
@@ -86,10 +89,6 @@ abstract public class Brick  {
         return out;
     }
 
-    public final boolean isBroken(){
-        return broken;
-    }
-
     public void repair() {
         broken = false;
         strength = fullStrength;
@@ -100,7 +99,7 @@ abstract public class Brick  {
         broken = (strength == 0);
     }
 
-
+    abstract public int giveScore();
 
 }
 

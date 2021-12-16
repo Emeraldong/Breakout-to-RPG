@@ -15,25 +15,9 @@ public class Wall{
     private Random rnd;
     private Rectangle area;
 
-    public Brick[] getBricks() {
-        return bricks;
-    }
-
     private Brick[] bricks;
 
-    public Ball getBall() {
-        return ball;
-    }
-
-    public void setBall(Ball ball) {
-        this.ball = ball;
-    }
-
     private Ball ball;
-
-    public Paddle getPlayer() {
-        return player;
-    }
 
     private Paddle player;
 
@@ -45,6 +29,30 @@ public class Wall{
     private int ballCount;
     private boolean ballLost;
 
+    private int score;
+
+    public int getScore(){return score;}
+
+    public Brick[] getBricks() {
+        return bricks;
+    }
+
+    public int getBrickCount(){
+        return brickCount;
+    }
+
+    public Ball getBall() {
+        return ball;
+    }
+
+    public int getBallCount(){
+        return ballCount;
+    }
+
+    public Paddle getPlayer() {
+        return player;
+    }
+
     public void setBallXSpeed(int s){
         ball.setXSpeed(s);
     }
@@ -53,6 +61,13 @@ public class Wall{
         ball.setYSpeed(s);
     }
 
+    public void setBall(Ball ball) {
+        this.ball = ball;
+    }
+
+    public boolean isBallLost(){
+        return ballLost;
+    }
 
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
@@ -71,9 +86,9 @@ public class Wall{
         ballReset();
         area = drawArea;
 
+        score = 0;
 
     }
-
 
     public void move(){
         player.move();
@@ -106,17 +121,21 @@ public class Wall{
                 //Vertical Impact
                 case Brick.UP_IMPACT:
                     ball.reverseY();
+                    scoreCalc(b);
                     return b.setImpact(ball.getDown(), Crack.UP);
                 case Brick.DOWN_IMPACT:
                     ball.reverseY();
+                    scoreCalc(b);
                     return b.setImpact(ball.getUp(),Crack.DOWN);
 
                 //Horizontal Impact
                 case Brick.LEFT_IMPACT:
                     ball.reverseX();
+                    scoreCalc(b);
                     return b.setImpact(ball.getRight(),Crack.RIGHT);
                 case Brick.RIGHT_IMPACT:
                     ball.reverseX();
+                    scoreCalc(b);
                     return b.setImpact(ball.getLeft(),Crack.LEFT);
             }
         }
@@ -127,18 +146,6 @@ public class Wall{
         Point2D p = ball.getPosition();
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
         //returns true if ball is detected to be outside the play area.
-    }
-
-    public int getBrickCount(){
-        return brickCount;
-    }
-
-    public int getBallCount(){
-        return ballCount;
-    }
-
-    public boolean isBallLost(){
-        return ballLost;
     }
 
     public void ballReset(){    //note to self: try reusing code from the other one
@@ -200,6 +207,10 @@ public class Wall{
                 throw  new IllegalArgumentException(String.format("Unknown Type:%d\n",type));
         }
         return  out;
+    }
+
+    public void scoreCalc(Brick brick){
+        score += brick.giveScore();
     }
 
 }

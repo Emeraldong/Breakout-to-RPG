@@ -9,6 +9,8 @@ import java.util.Random;
 
 public class Brick3 extends Brick {
 
+    private static final int SCORE = 100;
+    private static final int CRACKED = 200;
     private static final String NAME = "Steel Brick";
     private static final Color DEF_INNER = new Color(203, 203, 201);
     private static final Color DEF_BORDER = Color.BLACK;
@@ -18,10 +20,15 @@ public class Brick3 extends Brick {
     private Random rnd;
     private Shape brickFace;
 
+    private int score;
+    private int storedScore;
+
     public Brick3(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,STEEL_STRENGTH);
         rnd = new Random();
         brickFace = getBrickFace();
+        score = SCORE;
+        storedScore = 0;
     }
 
 
@@ -30,11 +37,12 @@ public class Brick3 extends Brick {
         return new Rectangle(pos,size);
     }
 
-    //@Override
+    @Override
     public Shape getBrick() {
         return brickFace;
     }
 
+    @Override
     public  boolean setImpact(Point2D point , int dir){
         if(super.isBroken())
             return false;
@@ -42,10 +50,17 @@ public class Brick3 extends Brick {
         return  super.isBroken();
     }
 
+    @Override
     public void impact(){
         if(rnd.nextDouble() < STEEL_PROBABILITY){
+            score = SCORE + storedScore;//if it's broken
             super.impact();
         }
+            storedScore += CRACKED;
+    }
+
+    public int giveScore(){
+        return score;
     }
 
 }
