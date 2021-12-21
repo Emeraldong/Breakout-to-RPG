@@ -25,6 +25,10 @@ public class MainMenuController implements ActionListener {
             case "exit":
                 System.exit(0);
                 break;
+
+            case "info":
+                gameFrame.getCardLayout().show(gameFrame.getContentPane(),"scores");
+                gameFrame.getScoreFile().readScore();
         }
     }
 }

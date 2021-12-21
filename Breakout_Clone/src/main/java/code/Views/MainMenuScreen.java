@@ -31,6 +31,7 @@ public class MainMenuScreen extends JPanel{
         buttonAdder();
     }
 
+    @Override
     public void paintComponent (Graphics g){
         g.drawImage(img, 0, 0, this.getWidth(),this.getHeight(),null);
         g.drawImage(mainText, 0, this.getHeight()/4, this.getWidth(),200,null);
@@ -46,7 +47,7 @@ public class MainMenuScreen extends JPanel{
         exit = new JButton("    Exit    ");
         exit.setActionCommand("exit");
 
-        about = new JButton("    About    ");
+        about = new JButton("    Scores    ");
         about.setActionCommand("info");
 
         add(start);

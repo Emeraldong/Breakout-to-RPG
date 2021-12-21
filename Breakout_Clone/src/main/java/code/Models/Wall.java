@@ -191,6 +191,10 @@ public class Wall{
         ballCount = 3;
     }
 
+    public void resetScore(){
+        score = 0;
+    }
+
     public Brick makeBrick(Point point, Dimension size, int type){
         Brick out;
         switch(type){

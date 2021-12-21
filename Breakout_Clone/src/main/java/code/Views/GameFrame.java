@@ -2,13 +2,10 @@ package code.Views;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
-import java.awt.event.WindowListener;
 
 import code.GameBoard;
-import code.Views.*;
 
 
 public class GameFrame extends JFrame implements WindowFocusListener {
@@ -21,6 +18,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private GameBoard gameBoard;
     private MainMenuScreen menuScreen;
+    private ScoreViewer scoreFile;
+
     private CardLayout cardLayout;
     private boolean gaming;
 
@@ -28,6 +27,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     public CardLayout getCardLayout() {
         return cardLayout;
     }
+
+    public ScoreViewer getScoreFile(){ return scoreFile;}
 
     public void setCardLayout(CardLayout cardLayout) {
         this.cardLayout = cardLayout;
@@ -42,9 +43,11 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
 
         menuScreen = new MainMenuScreen(this);
-        gameBoard = new GameBoard(this);
+        gameBoard = new GameBoard(this, this);
+        scoreFile = new ScoreViewer(this);
         this.add(menuScreen,"menu");
         this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
+        this.add(scoreFile,"scores");
         initialize();
 
 
