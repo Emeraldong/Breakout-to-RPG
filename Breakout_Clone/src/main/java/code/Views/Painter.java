@@ -24,8 +24,8 @@ public class Painter extends JPanel {
     private String message;
     private static final String CONTINUE = "Continue";
     private static final String RESTART = "Restart";
-    private static final String EXIT = "Exit";
-    private static final String PAUSE = "Pause Menu";
+    private static final String EXIT = "Back to Main Menu";
+    private static final String PAUSE = "Game Paused";
 
     private Font menuFont;
     private static final int TEXT_SIZE = 30;
@@ -238,8 +238,11 @@ public class Painter extends JPanel {
         y *= 3.0/2;
 
         if(exitButtonRect == null){
-            exitButtonRect = (Rectangle) continueButtonRect.clone();
+            //exitButtonRect = (Rectangle) continueButtonRect.clone();
+            FontRenderContext frc = g2d.getFontRenderContext();
+            exitButtonRect = menuFont.getStringBounds(EXIT,frc).getBounds();
             exitButtonRect.setLocation(x,y-exitButtonRect.height);
+            myOwner.setTextContinue(1);
         }
 
         g2d.drawString(EXIT,x,y);

@@ -19,11 +19,16 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private GameBoard gameBoard;
     private MainMenuScreen menuScreen;
     private ScoreViewer scoreFile;
+
     private JFXPanelMainMenu fxPanel;
 
     private CardLayout cardLayout;
     private boolean gaming;
 
+
+    public JFXPanelMainMenu getFxPanel() {
+        return fxPanel;
+    }
 
     public CardLayout getCardLayout() {
         return cardLayout;

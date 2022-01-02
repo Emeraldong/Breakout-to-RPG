@@ -23,6 +23,7 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
     private MouseDetector mouseDetector;
     private Painter painter;
     private DebugConsole debugConsole;
+
     private GameFrame myOwner;
 
     private String message;
@@ -30,6 +31,8 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
     private boolean showPauseMenu;
 
     private Font menuFont;
+
+    private int textContinue;
 
     public Wall getWall() {
         return wall;
@@ -55,8 +58,16 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         return debugConsole;
     }
 
+    public GameFrame getMyOwner() {
+        return myOwner;
+    }
+
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setTextContinue(int textContinue) {
+        this.textContinue = textContinue;
     }
 
 

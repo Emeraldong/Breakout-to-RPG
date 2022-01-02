@@ -1,6 +1,7 @@
 package code.Controllers;
 
 import code.GameBoard;
+import javafx.application.Platform;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -29,11 +30,21 @@ public class MouseDetector implements MouseListener, MouseMotionListener {
             gameBoard.setMessage("Restarting Game...");
             gameBoard.getWall().ballReset();
             gameBoard.getWall().wallReset();
+            gameBoard.getWall().resetScore();
             gameBoard.setShowPauseMenu(false);
             gameBoard.repaint();
         }
         else if(gameBoard.getPainter().getExitButtonRect().contains(p)){
-            System.exit(0);
+            gameBoard.getMyOwner().getCardLayout().show(gameBoard.getMyOwner().getContentPane(),"fxMenu");
+            gameBoard.requestFocus();
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    gameBoard.getMyOwner().getFxPanel().changeStartText();
+                }
+            });
+
+            //System.exit(0);
         }
 
     }
