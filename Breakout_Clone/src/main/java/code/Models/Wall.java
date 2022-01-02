@@ -72,7 +72,7 @@ public class Wall{
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
-        GameInitialization gameInitializer = new GameInitialization(this);
+        InitializeGame gameInitializer = new InitializeGame(this);
         levels = gameInitializer.makeLevels(drawArea,brickCount,lineCount,brickDimensionRatio);
         level = 0;
 

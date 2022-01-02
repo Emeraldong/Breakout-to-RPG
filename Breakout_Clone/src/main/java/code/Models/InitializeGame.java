@@ -3,7 +3,7 @@ package code.Models;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-public class GameInitialization {
+public class InitializeGame {
 
     private Wall wallPrime;
 
@@ -13,7 +13,7 @@ public class GameInitialization {
     private static final int STEEL = 2;
     private static final int CEMENT = 3;
 
-    public GameInitialization(Wall wall){
+    public InitializeGame(Wall wall){
         wallPrime = wall;
     }
 
@@ -31,10 +31,11 @@ public class GameInitialization {
         Brick[] tmp  = new Brick[brickCnt];
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
-        Point p = new Point();
+        //Point p = new Point();
 
         int i;
         for(i = 0; i < tmp.length; i++){
+            Point p = new Point();
             int line = i / brickOnLine;
             if(line == lineCnt)
                 break;
@@ -46,6 +47,7 @@ public class GameInitialization {
         }
 
         for(double y = brickHgt;i < tmp.length;i++, y += 2*brickHgt){
+            Point p = new Point();
             double x = (brickOnLine * brickLen) - (brickLen / 2);
             p.setLocation(x,y);
             tmp[i] = new Brick2(p,brickSize);
@@ -71,10 +73,11 @@ public class GameInitialization {
         Brick[] tmp  = new Brick[brickCnt];
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
-        Point p = new Point();
+        //Point p = new Point();
 
         int i;
         for(i = 0; i < tmp.length; i++){
+            Point p = new Point();
             int line = i / brickOnLine;
             if(line == lineCnt)
                 break;
@@ -89,6 +92,7 @@ public class GameInitialization {
         }
 
         for(double y = brickHgt;i < tmp.length;i++, y += 2*brickHgt){
+            Point p = new Point();
             double x = (brickOnLine * brickLen) - (brickLen / 2);
             p.setLocation(x,y);
             tmp[i] = wallPrime.makeBrick(p,brickSize,typeA);

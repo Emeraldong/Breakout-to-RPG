@@ -8,6 +8,7 @@ import code.Models.Paddle;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.font.FontRenderContext;
+import java.awt.image.BufferedImage;
 
 
 public class Painter extends JPanel {
@@ -33,6 +34,10 @@ public class Painter extends JPanel {
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
 
+    private BufferedImage wallOfBricks;
+
+    private BufferedImage paddleImage;
+
     private static final Color MENU_COLOR = new Color(0,255,0);
 
     public Rectangle getContinueButtonRect() {
@@ -53,6 +58,8 @@ public class Painter extends JPanel {
         this.message = message;
         strLen = 0;
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
+        wallOfBricks = new BufferedImage(600,450,BufferedImage.TYPE_INT_ARGB);
+        paddleImage = new BufferedImage(600,450,BufferedImage.TYPE_INT_ARGB);
 
         this.setFocusable(true);
     }
@@ -75,11 +82,20 @@ public class Painter extends JPanel {
 
         drawBall(myOwner.getWall().getBall(),g2d);
 
-        for(Brick b : myOwner.getWall().getBricks())
-            if(!b.isBroken())
+        for(Brick b : myOwner.getWall().getBricks()) {
+            if (!b.isBroken()) {
                 drawBrick(b,g2d);
+                //b.getLoader().displayBrick(wallOfBricks, g2d);
+            }
+        }
+        //g.drawImage(wallOfBricks,0,0,this);
+        /*Image toDraw = drawBrick(g2d);
+        if (toDraw != null) {
+            g2d.drawImage(toDraw, 0, 0, null);
+        } */
 
         drawPlayer(myOwner.getWall().getPlayer(),g2d);
+        //g.drawImage(wallOfBricks,0,0,this);
 
         if(myOwner.isShowPauseMenu())
             drawMenu(g2d);
@@ -94,8 +110,11 @@ public class Painter extends JPanel {
         g2d.setColor(tmp);
     }
 
-    public void drawBrick(Brick brick,Graphics2D g2d){
-        Color tmp = g2d.getColor();
+    public void drawBrick(Brick brick, Graphics2D g2d) { //originally parameters are Brick brick, Graphics2D g2d
+        BufferedImage aNewBrick = new BufferedImage((int)brick.getSize().getWidth(),(int)brick.getSize().getHeight(),BufferedImage.TYPE_INT_ARGB);
+        g2d.drawImage(brick.getLoader().displayBrick(aNewBrick, g2d),brick.getPointX(),brick.getPointY(),this);
+    }
+        /*Color tmp = g2d.getColor();
 
         g2d.setColor(brick.getInnerColor());
         g2d.fill(brick.getBrick());
@@ -104,8 +123,29 @@ public class Painter extends JPanel {
         g2d.draw(brick.getBrick());
 
 
-        g2d.setColor(tmp);
-    }
+        g2d.setColor(tmp); */
+
+        /*g2d = bi.createGraphics();
+        g2d.drawImage(image, brick.getPointX(), brick.getPointY(), null);
+        g2d.dispose(); */
+        //bi.getGraphics().drawImage(image,brick.getPointX(),brick.getPointY(),this);
+        //System.out.println((int)brick.getPoint().getX());
+
+        /*Image image;
+        BufferedImage wallImage = new BufferedImage(this.getWidth(),450,BufferedImage.TYPE_INT_ARGB);
+        //image = wallImage;
+        for(Brick b: myOwner.getWall().getBricks()){
+            if (!b.isBroken()) {
+                image = b.displayBrick(g2d);
+
+                Graphics2D gra2d;
+                gra2d = wallImage.createGraphics();
+                gra2d.drawImage(image, b.getPointX(), b.getPointY(), null);
+                gra2d.dispose();
+            }
+        }
+        return wallImage;
+    }*/
 
     public void drawBall(Ball ball, Graphics2D g2d){
         Color tmp = g2d.getColor();
@@ -122,7 +162,8 @@ public class Painter extends JPanel {
     }
 
     public void drawPlayer(Paddle p, Graphics2D g2d){
-        Color tmp = g2d.getColor();
+        BufferedImage thisPaddle = new BufferedImage((int)p.getSize().getWidth(),(int)p.getSize().getHeight(),BufferedImage.TYPE_INT_ARGB);
+        /*Color tmp = g2d.getColor();
 
         Shape s = p.getPaddleFace();
         g2d.setColor(Paddle.INNER_COLOR);
@@ -131,7 +172,8 @@ public class Painter extends JPanel {
         g2d.setColor(Paddle.BORDER_COLOR);
         g2d.draw(s);
 
-        g2d.setColor(tmp);
+        g2d.setColor(tmp);*/
+        g2d.drawImage(p.getLoader().displayPlayer(wallOfBricks, g2d),(int) (p.getBallPoint().getX()/1.5),(int) p.getBallPoint().getY(),this);
     }
 
     public void drawMenu(Graphics2D g2d){

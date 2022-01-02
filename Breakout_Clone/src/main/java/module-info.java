@@ -1,5 +1,11 @@
 module Breakout.Clone {
     requires java.desktop;
+    requires javafx.swt;
+    requires javafx.graphics;
+    requires javafx.fxml;
+    requires javafx.swing;
+
+
     exports code;
     exports code.Models;
     exports code.Controllers;

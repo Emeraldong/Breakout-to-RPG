@@ -1,10 +1,12 @@
 package code.Models;
 
 import code.Models.Ball;
+import code.Views.LoadPNG;
 
 import java.awt.*;
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
 
 abstract public class Brick  {
 
@@ -29,18 +31,30 @@ abstract public class Brick  {
 
 
     private Shape brickFace;
-
     private Color border;
     private Color inner;
 
     private int fullStrength;
     private int strength;
-
     private boolean broken;
+
+    private Point point;
+    private Dimension size;
+    private LoadPNG loader;
 
     public final boolean isBroken(){
         return broken;
     }
+
+    public Point getPoint(){
+        return point;
+    }
+
+    public Dimension getSize(){
+        return size;
+    }
+
+    public abstract LoadPNG getLoader();
 
     public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         broken = false;
@@ -49,7 +63,8 @@ abstract public class Brick  {
         this.border = border;
         this.inner = inner;
         this.fullStrength = this.strength = strength;
-
+        this.point = pos;
+        this.size = size;
     }
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
@@ -62,13 +77,12 @@ abstract public class Brick  {
     }
 
     public abstract Shape getBrick();
-
-
+    public abstract int getPointX();
+    public abstract int getPointY();
 
     public Color getBorderColor(){
         return  border;
     }
-
     public Color getInnerColor(){
         return inner;
     }

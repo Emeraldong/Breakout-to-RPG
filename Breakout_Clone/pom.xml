@@ -14,6 +14,13 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>net.imagej</groupId>
+            <artifactId>ij</artifactId>
+            <version>1.53j</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <pluginManagement>
@@ -31,10 +38,8 @@
                         </archive>
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
-
 
     </build>
 

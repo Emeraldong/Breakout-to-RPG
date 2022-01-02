@@ -10,7 +10,7 @@ import code.Controllers.MainMenuController;
 public class MainMenuScreen extends JPanel{
 
     private JButton start, settings, exit, about;
-    Image img, mainText;
+    private Image img, mainText;
 
     private MainMenuController menuListener;
 

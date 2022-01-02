@@ -87,3 +87,5 @@ public class ScoreViewer extends JPanel {
 
     }
 }
+
+// TO DO 21/12/2021- UPDATE GRAPHICS BY DOODLING BRICKS AND PLAYER, FIND OUT HOW TO USE IMAGES AS BRICKS
