@@ -19,6 +19,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private GameBoard gameBoard;
     private MainMenuScreen menuScreen;
     private ScoreViewer scoreFile;
+    private JFXPanelMainMenu fxPanel;
 
     private CardLayout cardLayout;
     private boolean gaming;
@@ -45,14 +46,16 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         menuScreen = new MainMenuScreen(this);
         gameBoard = new GameBoard(this, this);
         scoreFile = new ScoreViewer(this);
+        fxPanel = new JFXPanelMainMenu(this);
         this.add(menuScreen,"menu");
         this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
         this.add(scoreFile,"scores");
+        this.add(fxPanel.getJfxPanel(),"fxMenu");
         initialize();
 
 
         this.addWindowFocusListener(this);
-        cardLayout.show(this.getContentPane(),"menu");
+        cardLayout.show(this.getContentPane(),"fxMenu");
 
     }
 

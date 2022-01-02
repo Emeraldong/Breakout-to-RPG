@@ -9,6 +9,11 @@ public class StartGame {
     public static void main(String[] args){
         EventQueue.invokeLater(() -> new GameFrame().initialize());
     }
+    //originally
+    // public static void main(String[] args){
+    //        EventQueue.invokeLater(() -> new GameFrame().initialize());
+    //    }
+
     // use [space] to start/pause the game
     // use [←] to move the player left
     // use [→] to move the player right

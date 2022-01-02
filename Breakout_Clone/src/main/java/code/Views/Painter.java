@@ -173,7 +173,7 @@ public class Painter extends JPanel {
         g2d.draw(s);
 
         g2d.setColor(tmp);*/
-        g2d.drawImage(p.getLoader().displayPlayer(wallOfBricks, g2d),(int) (p.getBallPoint().getX()/1.5),(int) p.getBallPoint().getY(),this);
+        g2d.drawImage(p.getLoader().displayPlayer(wallOfBricks, g2d),(int)(p.getBallPoint().getX() - (p.getSize().getWidth() / 2)),(int) p.getBallPoint().getY(),this);
     }
 
     public void drawMenu(Graphics2D g2d){
