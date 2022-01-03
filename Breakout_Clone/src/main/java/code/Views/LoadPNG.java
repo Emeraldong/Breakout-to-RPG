@@ -1,5 +1,6 @@
 package code.Views;
 
+import code.GameBoard;
 import code.Models.Brick;
 
 import javax.imageio.ImageIO;
@@ -9,9 +10,11 @@ import java.io.IOException;
 
 public class LoadPNG {
 
+    private static final int numOfBackgrounds = 4;
+
     private Image image;
     private Image playerImage;
-    private Image ballImage;
+    private Image backgrounds[];
     private BufferedImage bi;
 
     private Point point;
@@ -20,9 +23,15 @@ public class LoadPNG {
     private Composite tmp;
     private Color tmpColor;
 
+    private GameBoard mastersMaster;
+
     public LoadPNG(Point point, Dimension size){
         this.point = point;
         this.size = size;
+    }
+
+    public void setGameBoard(GameBoard gameBoard){
+        mastersMaster = gameBoard;
     }
 
     public void loadImageBrick(String path){
@@ -46,6 +55,19 @@ public class LoadPNG {
         }
     }
 
+    public void loadBackgrounds(){
+        backgrounds = new Image[4];
+        for (int i = 0;i < numOfBackgrounds; i++) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield0.png"));
+                backgrounds[i] = bufferedImage.getScaledInstance(600,450, Image.SCALE_SMOOTH);
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public Image displayBrick(BufferedImage bufferedImage,Graphics2D g2d){
 
         //BufferedImage bi = new BufferedImage(image.getWidth(null),image.getHeight(null),BufferedImage.TYPE_INT_ARGB);
@@ -59,21 +81,15 @@ public class LoadPNG {
     public Image displayPlayer(BufferedImage bufferedImage, Graphics2D g2d){
         g2d = bufferedImage.createGraphics();
         g2d.drawImage(this.playerImage,(int)point.getX(),(int)point.getY(),null);
+
         return playerImage;
     }
 
-    public Image clearBrick(Point p,Graphics2D g2d){
-        tmp = g2d.getComposite();
-        tmpColor = g2d.getColor();
+    public Image displayBackground(BufferedImage bufferedImage, Graphics2D g2d, int selection){
+        g2d = bufferedImage.createGraphics();
+        g2d.drawImage(this.backgrounds[selection],0,0,null);
 
-        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.CLEAR,0.01f));
-        g2d.fillRect(point.x,point.y,(int)size.getWidth(),(int)size.getHeight());
-        return image;
-    }
-
-    public void normalise(Graphics2D g2d){
-        g2d.setComposite(tmp);
-        g2d.setColor(tmpColor);
+        return backgrounds[selection];
     }
 
 }

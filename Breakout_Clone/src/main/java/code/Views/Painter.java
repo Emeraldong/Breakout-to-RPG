@@ -35,8 +35,9 @@ public class Painter extends JPanel {
     private Rectangle restartButtonRect;
 
     private BufferedImage wallOfBricks;
+    private BufferedImage playField;
 
-    private BufferedImage paddleImage;
+    private LoadPNG loader;
 
     private static final Color MENU_COLOR = new Color(0,255,0);
 
@@ -58,8 +59,11 @@ public class Painter extends JPanel {
         this.message = message;
         strLen = 0;
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
-        wallOfBricks = new BufferedImage(600,450,BufferedImage.TYPE_INT_ARGB);
-        paddleImage = new BufferedImage(600,450,BufferedImage.TYPE_INT_ARGB);
+        wallOfBricks = new BufferedImage(DEF_WIDTH,DEF_HEIGHT,BufferedImage.TYPE_INT_ARGB);
+        loader = new LoadPNG(null,null);
+        loader.setGameBoard(myOwner);
+        loader.loadBackgrounds();
+
 
         this.setFocusable(true);
     }
@@ -77,6 +81,7 @@ public class Painter extends JPanel {
 
         clear(g2d);
 
+        drawBackground(g2d);
         g2d.setColor(Color.BLUE);
         g2d.drawString(message,250,225);
 
@@ -88,14 +93,8 @@ public class Painter extends JPanel {
                 //b.getLoader().displayBrick(wallOfBricks, g2d);
             }
         }
-        //g.drawImage(wallOfBricks,0,0,this);
-        /*Image toDraw = drawBrick(g2d);
-        if (toDraw != null) {
-            g2d.drawImage(toDraw, 0, 0, null);
-        } */
 
         drawPlayer(myOwner.getWall().getPlayer(),g2d);
-        //g.drawImage(wallOfBricks,0,0,this);
 
         if(myOwner.isShowPauseMenu())
             drawMenu(g2d);
@@ -108,6 +107,10 @@ public class Painter extends JPanel {
         g2d.setColor(BG_COLOR);
         g2d.fillRect(0,0,getWidth(),getHeight());
         g2d.setColor(tmp);
+    }
+
+    public void drawBackground(Graphics2D g2d){
+        g2d.drawImage(loader.displayBackground(wallOfBricks,g2d,0),0,0,this);
     }
 
     public void drawBrick(Brick brick, Graphics2D g2d) { //originally parameters are Brick brick, Graphics2D g2d

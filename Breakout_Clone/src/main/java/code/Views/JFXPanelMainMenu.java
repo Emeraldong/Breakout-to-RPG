@@ -1,5 +1,6 @@
 package code.Views;
 
+import code.Controllers.JavaFXMainMenuController;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
@@ -17,15 +18,21 @@ public class JFXPanelMainMenu {
 
     private JFXPanel jfxPanel;
     private GameFrame owner;
+
     private Button start;
     private Button exit;
     private Button score;
     private Button tutor;
 
+    private JavaFXMainMenuController myController;
+
     public JFXPanel getJfxPanel() {
         return jfxPanel;
     }
 
+    public GameFrame getOwner() {
+        return owner;
+    }
 
     public JFXPanelMainMenu(GameFrame gameFrame){
         jfxPanel = new JFXPanel();
@@ -33,51 +40,46 @@ public class JFXPanelMainMenu {
         Platform.runLater(()->{
             jfxPanel.setScene(createScene());
         });
+        myController = new JavaFXMainMenuController(owner, this);
     }
 
     private Scene createScene() {
 
-        start= new Button("Start");
-        exit= new Button("Quit");
-        score = new Button("Scores");
-        tutor = new Button("Tutorial");
+        createButtons();
 
-        start.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("Welcome!");
-                owner.getCardLayout().show(owner.getContentPane(),"game");
-                owner.getGameBoard().requestFocus();
-            }
-        });
-
-        exit.setOnAction(new EventHandler<ActionEvent>() {
+        /*exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Goodbye!");
                 System.exit(0);
             }
-        });
+        });*/
+        start.setOnAction(e-> myController.handle(e));
+        exit.setOnAction(e-> myController.handle(e));
+        tutor.setOnAction(e-> myController.handle(e));
+        score.setOnAction(e-> myController.handle(e));
 
-        ImageView titleResized = loadImages();
-        VBox root = new VBox(titleResized,start,tutor,score,exit);
+
+        VBox root = new VBox();
         Background background = initializeBackground(root);
+        ImageView titleResized = loadImages(root);
         //root.setStyle("-fx-background: red;");
         root.setBackground(background);
         Label label = new Label("hello friend");
         Label other = new Label("hello WORLD!!!");
-        root.getChildren().addAll(label, other);
+        root.getChildren().addAll(titleResized,start,tutor,score,exit,label, other);
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
         return scene;
     }
 
-    private ImageView loadImages(){
+    private ImageView loadImages(VBox center){
         Image title = new Image(String.valueOf(getClass().getResource("/mainMenuText.png")));
         ImageView titleResized = new ImageView();
         titleResized.setImage(title);
-        titleResized.setFitWidth(jfxPanel.getWidth()/2);
+        titleResized.setFitWidth(jfxPanel.getWidth());
         titleResized.setFitHeight(jfxPanel.getHeight()/4);
+        //titleResized.fitWidthProperty().bind(center.widthProperty());
+        //titleResized.fitHeightProperty().bind(center.heightProperty());
         //titleResized.setPreserveRatio(true);
         titleResized.setSmooth(true);
         return titleResized;
@@ -86,8 +88,8 @@ public class JFXPanelMainMenu {
     private Background initializeBackground(VBox root){
         root.setSpacing(50);
         root.setAlignment(Pos.BASELINE_CENTER);
-        BackgroundSize backgroundSize = new BackgroundSize(600,450,true,true,true,false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/field2.png")),600,450,false,true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/field2.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
         return background;
@@ -95,6 +97,18 @@ public class JFXPanelMainMenu {
 
     public void changeStartText(){
         start.setText("Continue");
+    }
+
+    private void createButtons(){
+        start= new Button("Start");
+        exit= new Button("Quit");
+        score = new Button("Scores");
+        tutor = new Button("Tutorial");
+
+        start.setId("start");
+        exit.setId("quit");
+        score.setId("score");
+        tutor.setId("tutor");
     }
 
 }
