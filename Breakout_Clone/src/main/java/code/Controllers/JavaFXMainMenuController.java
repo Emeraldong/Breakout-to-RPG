@@ -14,9 +14,11 @@ import javafx.event.Event;
 public class JavaFXMainMenuController {
 
     private JFXPanelMainMenu myOwner;
+    private GameFrame myGameFrame;
 
     public JavaFXMainMenuController(GameFrame owner, JFXPanelMainMenu jfxPanelMainMenu) {
         myOwner = jfxPanelMainMenu;
+        myGameFrame = owner;
         //myOwner = javaFXMainMenu;
         /*startHandler = new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -32,14 +34,18 @@ public class JavaFXMainMenuController {
         switch (id){
             case "start":
                 System.out.println("Welcome!");
-                myOwner.getOwner().getCardLayout().show(myOwner.getOwner().getContentPane(),"game");
-                myOwner.getOwner().getGameBoard().requestFocus();
+                myGameFrame.getCardLayout().show(myGameFrame.getContentPane(),"game");
+                myGameFrame.getGameBoard().requestFocus();
                 break;
             case "tutor":
+                System.out.println("To the tutorial!");
+                myGameFrame.getCardLayout().show(myGameFrame.getContentPane(),"fxTutor");
+                myGameFrame.getGameBoard().requestFocus();
+                break;
             case "score":
                 System.out.println("not implemented yet, soon!");
                 break;
-            case "exit":
+            case "quit":
                 System.out.println("Goodbye!");
                 System.exit(0);
                 break;

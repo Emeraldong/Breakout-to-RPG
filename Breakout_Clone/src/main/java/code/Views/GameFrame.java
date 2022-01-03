@@ -20,14 +20,15 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private MainMenuScreen menuScreen;
     private ScoreViewer scoreFile;
 
-    private JFXPanelMainMenu fxPanel;
+    private JFXPanelMainMenu jfxPanelMainMenu;
+    private JFXPanelTutorialView jfxTutor;
 
     private CardLayout cardLayout;
     private boolean gaming;
 
 
     public JFXPanelMainMenu getFxPanel() {
-        return fxPanel;
+        return jfxPanelMainMenu;
     }
 
     public CardLayout getCardLayout() {
@@ -48,14 +49,16 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setLayout(cardLayout); //originally this.setLayout(new BorderLayout());
 
 
-        menuScreen = new MainMenuScreen(this);
+        //menuScreen = new MainMenuScreen(this);
         gameBoard = new GameBoard(this, this);
         scoreFile = new ScoreViewer(this);
-        fxPanel = new JFXPanelMainMenu(this);
-        this.add(menuScreen,"menu");
+        jfxPanelMainMenu = new JFXPanelMainMenu(this);
+        jfxTutor = new JFXPanelTutorialView(this);
+        //this.add(menuScreen,"menu");
         this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
         this.add(scoreFile,"scores");
-        this.add(fxPanel.getJfxPanel(),"fxMenu");
+        this.add(jfxPanelMainMenu.getJfxPanel(),"fxMenu");
+        this.add(jfxTutor.getJfxPanel(),"fxTutor");
         initialize();
 
 

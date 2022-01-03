@@ -61,15 +61,13 @@ public class JFXPanelMainMenu {
 
 
         VBox root = new VBox();
-        Background background = initializeBackground(root);
+        initializeBackground(root);
         ImageView titleResized = loadImages(root);
         //root.setStyle("-fx-background: red;");
-        root.setBackground(background);
         Label label = new Label("hello friend");
         Label other = new Label("hello WORLD!!!");
         root.getChildren().addAll(titleResized,start,tutor,score,exit,label, other);
-        Scene scene = new Scene(root);
-        return scene;
+        return new Scene(root);
     }
 
     private ImageView loadImages(VBox center){
@@ -85,14 +83,14 @@ public class JFXPanelMainMenu {
         return titleResized;
     }
 
-    private Background initializeBackground(VBox root){
+    private void initializeBackground(VBox root){
         root.setSpacing(50);
         root.setAlignment(Pos.BASELINE_CENTER);
         BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
         BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/field2.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
+        root.setBackground(background);
 
-        return background;
     }
 
     public void changeStartText(){
