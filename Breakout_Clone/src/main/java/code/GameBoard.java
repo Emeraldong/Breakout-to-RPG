@@ -14,7 +14,6 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
-    private static final int TEXT_SIZE = 30;
 
     private Timer gameTimer;
 
@@ -30,7 +29,7 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
     private boolean showPauseMenu;
 
-    private Font menuFont;
+    //private Font menuFont;
 
     private int textContinue;
 
@@ -82,11 +81,11 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         keyDetector = new KeyDetector(this);
         mouseDetector = new MouseDetector(this);
         painter = new Painter(this,message);
+        debugConsole = new DebugConsole(owner,wall,this);
         this.initialize();
 
 
-        menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
-        debugConsole = new DebugConsole(owner,wall,this);
+        //menuFont = new Font("SansSerif",Font.PLAIN,TEXT_SIZE);
         //initialize the first level
         wall.nextLevel();
 
@@ -98,8 +97,11 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
                 if(wall.ballEnd()){
                     wall.wallReset();
                     message = "Game over. Your score is "+wall.getScore();
-                    myOwner.getScoreFile().writeScore(wall.getScore());
+                    myOwner.getNameEntry().compareScore(wall.getScore());
+                    myOwner.getNameEntry().setScore(wall.getScore());
+                    //myOwner.getScoreFile().writeScore(String.valueOf(wall.getScore()));
                     wall.resetScore();
+                    myOwner.getCardLayout().show(myOwner.getContentPane(),"gameOver");
                 }
                 wall.ballReset();
                 gameTimer.stop();
@@ -111,12 +113,15 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
                     wall.ballReset();
                     wall.wallReset();
                     wall.nextLevel();
+                    painter.getLoader().setLevel(wall.getLevel());
                 }
                 else{
                     message = "ALL WALLS DESTROYED";
                     gameTimer.stop();
-                    myOwner.getScoreFile().writeScore(wall.getScore());
+                    myOwner.getNameEntry().compareScore(wall.getScore());
+                    myOwner.getNameEntry().setScore(wall.getScore());
                     wall.resetScore();
+                    myOwner.getCardLayout().show(myOwner.getContentPane(),"gameOver");
                 }
             }
 
@@ -125,14 +130,13 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
     }
 
-
-
     public void initialize(){
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
         this.setFocusable(true);
         this.requestFocusInWindow();
         this.setLayout(new BorderLayout());
         this.add(painter,BorderLayout.CENTER);
+        painter.setWidthAndHeight();
         this.addKeyListener(keyDetector);
         this.addMouseListener(mouseDetector);
         this.addMouseMotionListener(mouseDetector);
@@ -141,8 +145,8 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
     public void onLostFocus(){
         gameTimer.stop();
-        message = "Focus Lost";
-        painter.repaint();
+        message = "Focus Lost. Press SPACE to resume";
+        painter.updater(this,message);
     }
 
 

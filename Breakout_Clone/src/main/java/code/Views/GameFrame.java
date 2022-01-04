@@ -21,7 +21,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     private ScoreViewer scoreFile;
 
     private JFXPanelMainMenu jfxPanelMainMenu;
+    private JFXPanelScoreView jfxPanelScoreView;
     private JFXPanelTutorialView jfxTutor;
+    private NameEntry nameEntry;
 
     private CardLayout cardLayout;
     private boolean gaming;
@@ -31,14 +33,19 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         return jfxPanelMainMenu;
     }
 
+    public JFXPanelScoreView getJfxPanelScoreView() {
+        return jfxPanelScoreView;
+    }
+
+
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
     public ScoreViewer getScoreFile(){ return scoreFile;}
 
-    public void setCardLayout(CardLayout cardLayout) {
-        this.cardLayout = cardLayout;
+    public NameEntry getNameEntry(){
+        return nameEntry;
     }
 
 
@@ -47,21 +54,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gaming = false;
         cardLayout = new CardLayout();
         this.setLayout(cardLayout); //originally this.setLayout(new BorderLayout());
-
-
-        //menuScreen = new MainMenuScreen(this);
-        gameBoard = new GameBoard(this, this);
-        scoreFile = new ScoreViewer(this);
-        jfxPanelMainMenu = new JFXPanelMainMenu(this);
-        jfxTutor = new JFXPanelTutorialView(this);
-        //this.add(menuScreen,"menu");
-        this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
-        this.add(scoreFile,"scores");
-        this.add(jfxPanelMainMenu.getJfxPanel(),"fxMenu");
-        this.add(jfxTutor.getJfxPanel(),"fxTutor");
+        addCards();
         initialize();
-
-
         this.addWindowFocusListener(this);
         cardLayout.show(this.getContentPane(),"fxMenu");
 
@@ -93,5 +87,20 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         if(gaming)
             gameBoard.onLostFocus();
 
+    }
+
+    public void addCards(){
+        gameBoard = new GameBoard(this, this);
+        //scoreFile = new ScoreViewer(this);
+        jfxPanelMainMenu = new JFXPanelMainMenu(this);
+        jfxTutor = new JFXPanelTutorialView(this);
+        nameEntry = new NameEntry(this);
+        jfxPanelScoreView = new JFXPanelScoreView(this);
+        this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
+        //this.add(scoreFile,"scores");
+        this.add(jfxPanelMainMenu.getJfxPanel(),"fxMenu");
+        this.add(jfxTutor.getJfxPanel(),"fxTutor");
+        this.add(nameEntry.getJfxPanel(),"gameOver");
+        this.add(jfxPanelScoreView.getJfxPanel(),"scoreList");
     }
 }

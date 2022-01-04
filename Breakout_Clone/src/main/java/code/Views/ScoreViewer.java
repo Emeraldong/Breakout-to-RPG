@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class ScoreViewer extends JPanel {
 
     private static int OFFSET = 50;
-    private int offsetForPainting = 100;
+    private static int offsetForPainting = 100;
 
     private File toReadOrWrite;
     private String scores;
@@ -61,8 +61,8 @@ public class ScoreViewer extends JPanel {
         }
     }
 
-    public void writeScore(int scoreToWrite){
-        scores = String.valueOf(scoreToWrite);
+    public void writeScore(String scoreToWrite){
+        scores = scoreToWrite;
         System.out.println(scores);
         try {
             FileWriter writer = new FileWriter(toReadOrWrite, true);
@@ -87,5 +87,3 @@ public class ScoreViewer extends JPanel {
 
     }
 }
-
-// TO DO 21/12/2021- UPDATE GRAPHICS BY DOODLING BRICKS AND PLAYER, FIND OUT HOW TO USE IMAGES AS BRICKS
