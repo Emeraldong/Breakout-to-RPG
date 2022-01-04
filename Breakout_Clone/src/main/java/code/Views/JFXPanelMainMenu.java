@@ -64,9 +64,7 @@ public class JFXPanelMainMenu {
         initializeBackground(root);
         ImageView titleResized = loadImages(root);
         //root.setStyle("-fx-background: red;");
-        Label label = new Label("hello friend");
-        Label other = new Label("hello WORLD!!!");
-        root.getChildren().addAll(titleResized,start,tutor,score,exit,label, other);
+        root.getChildren().addAll(titleResized,start,tutor,score,exit);
         return new Scene(root);
     }
 
