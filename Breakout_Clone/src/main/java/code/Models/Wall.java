@@ -31,6 +31,10 @@ public class Wall{
 
     private int score;
 
+    public int getLevel() {
+        return level;
+    }
+
     public int getScore(){return score;}
 
     public Brick[] getBricks() {
@@ -74,7 +78,7 @@ public class Wall{
         this.startPoint = new Point(ballPos);
         InitializeGame gameInitializer = new InitializeGame(this);
         levels = gameInitializer.makeLevels(drawArea,brickCount,lineCount,brickDimensionRatio);
-        level = 0;
+        level = -1;
 
         ballCount = 3;
         ballLost = false;
@@ -168,6 +172,7 @@ public class Wall{
             b.repair();
         brickCount = bricks.length;
         ballCount = 3;
+        level = -1;
     }
 
     public boolean ballEnd(){
@@ -179,7 +184,8 @@ public class Wall{
     }
 
     public void nextLevel(){
-        bricks = levels[level++];
+        level++;
+        bricks = levels[level];
         this.brickCount = bricks.length;
     }
 

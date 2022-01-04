@@ -20,14 +20,18 @@ public class LoadPNG {
     private Point point;
     private Dimension size;
 
-    private Composite tmp;
-    private Color tmpColor;
-
     private GameBoard mastersMaster;
+
+    private int level;
+
+    public void setLevel(int level){
+        this.level = level;
+    }
 
     public LoadPNG(Point point, Dimension size){
         this.point = point;
         this.size = size;
+        level = 0;
     }
 
     public void setGameBoard(GameBoard gameBoard){
@@ -55,15 +59,24 @@ public class LoadPNG {
         }
     }
 
-    public void loadBackgrounds(){
+    public void initBackgrounds(){
         backgrounds = new Image[4];
         for (int i = 0;i < numOfBackgrounds; i++) {
-            try {
-                BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield0.png"));
-                backgrounds[i] = bufferedImage.getScaledInstance(600,450, Image.SCALE_SMOOTH);
+            if(i==0) {
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield0.png"));
+                    backgrounds[i] = bufferedImage.getScaledInstance(600, 450, Image.SCALE_SMOOTH);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            catch (IOException e) {
-                e.printStackTrace();
+            else if(i==1){
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield1.png"));
+                    backgrounds[i] = bufferedImage.getScaledInstance(600, 450, Image.SCALE_SMOOTH);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -85,11 +98,11 @@ public class LoadPNG {
         return playerImage;
     }
 
-    public Image displayBackground(BufferedImage bufferedImage, Graphics2D g2d, int selection){
+    public Image displayBackground(BufferedImage bufferedImage, Graphics2D g2d){
         g2d = bufferedImage.createGraphics();
-        g2d.drawImage(this.backgrounds[selection],0,0,null);
+        g2d.drawImage(this.backgrounds[level],0,0,null);
 
-        return backgrounds[selection];
+        return backgrounds[level];
     }
 
 }
