@@ -43,7 +43,9 @@ public class JavaFXMainMenuController {
                 myGameFrame.getGameBoard().requestFocus();
                 break;
             case "score":
-                System.out.println("not implemented yet, soon!");
+                System.out.println("Look at these scores!");
+                myGameFrame.getCardLayout().show(myGameFrame.getContentPane(),"scoreList");
+                myGameFrame.getGameBoard().requestFocus();
                 break;
             case "quit":
                 System.out.println("Goodbye!");

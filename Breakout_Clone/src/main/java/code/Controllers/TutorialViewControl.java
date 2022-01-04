@@ -6,12 +6,12 @@ import javafx.event.Event;
 
 public class TutorialViewControl {
 
-    private JFXPanelTutorialView myScoreView;
+    private JFXPanelTutorialView myTutorialView;
     private GameFrame myGameFrame;
 
     public TutorialViewControl(GameFrame gameFrame, JFXPanelTutorialView jfxPanelScoreView){
         myGameFrame = gameFrame;
-        myScoreView = jfxPanelScoreView;
+        myTutorialView = jfxPanelScoreView;
     }
 
     public void backToMainMenu(Event event) {
