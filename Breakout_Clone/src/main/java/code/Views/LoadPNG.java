@@ -1,19 +1,24 @@
 package code.Views;
 
 import code.GameBoard;
+import code.Models.Ball;
 import code.Models.Brick;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.geom.Ellipse2D;
+import java.awt.image.*;
 import java.io.IOException;
 
 public class LoadPNG {
 
-    private static final int numOfBackgrounds = 4;
+    private static final int numOfBackgrounds = 5;
+    private static final int DEF_HEIGHT = 450;
+    private static final int DEF_WIDTH = 600;
 
     private Image image;
     private Image playerImage;
+    private Image ballImage;
     private Image backgrounds[];
     private BufferedImage bi;
 
@@ -60,12 +65,12 @@ public class LoadPNG {
     }
 
     public void initBackgrounds(){
-        backgrounds = new Image[4];
+        backgrounds = new Image[5];
         for (int i = 0;i < numOfBackgrounds; i++) {
             if(i==0) {
                 try {
                     BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield0.png"));
-                    backgrounds[i] = bufferedImage.getScaledInstance(600, 450, Image.SCALE_SMOOTH);
+                    backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -73,7 +78,31 @@ public class LoadPNG {
             else if(i==1){
                 try {
                     BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield1.png"));
-                    backgrounds[i] = bufferedImage.getScaledInstance(600, 450, Image.SCALE_SMOOTH);
+                    backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(i==2){
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield2.png"));
+                    backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(i==3){
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield3.png"));
+                    backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(i==4){
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield4.png"));
+                    backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -100,7 +129,12 @@ public class LoadPNG {
 
     public Image displayBackground(BufferedImage bufferedImage, Graphics2D g2d){
         g2d = bufferedImage.createGraphics();
-        g2d.drawImage(this.backgrounds[level],0,0,null);
+        if(level >= numOfBackgrounds){
+            g2d.drawImage(this.backgrounds[numOfBackgrounds-1],0,0,null);
+        }
+        else {
+            g2d.drawImage(this.backgrounds[level], 0, 0, null);
+        }
 
         return backgrounds[level];
     }

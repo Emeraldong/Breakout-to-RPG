@@ -143,6 +143,7 @@ public class Painter extends JPanel {
         g2d.draw(s);
 
         g2d.setColor(tmp);
+        //g2d.drawImage(ball.getLoader().displayBall(wallOfBricks,g2d),(int)ball.getPosition().getX(),(int)ball.getPosition().getY(),this );
     }
 
     public void drawPlayer(Paddle p, Graphics2D g2d){
