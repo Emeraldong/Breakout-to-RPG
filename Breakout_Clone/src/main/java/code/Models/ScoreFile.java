@@ -29,12 +29,11 @@ public class ScoreFile {
             File scoreFile = new File ("scores.txt"); //(String.valueOf(getClass().getResource("/scores.txt")));
             if (scoreFile.createNewFile()){
                 System.out.println("File created.");
-                toReadOrWrite = scoreFile;
             }
             else {
                 System.out.println("File already exists.");
-                toReadOrWrite = scoreFile;
             }
+            toReadOrWrite = scoreFile;
             setHighScores();
         }
         catch(IOException e) {
@@ -80,35 +79,4 @@ public class ScoreFile {
             e.printStackTrace();
         }
     }
-
-    public void compareScore() {
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of(String.valueOf(getClass().getResource("/scores.txt"))))) {
-            String line;
-            String newline;
-            while ((line = bufferedReader.readLine()) != null) {
-                newline = line.replaceAll("\\D+","");
-            }
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-    public String readScore(){
-        String line = new String();
-        try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of(String.valueOf(getClass().getResource("/scores.txt"))))) {
-            while ((line = bufferedReader.readLine()) != null) {
-
-            }
-        }
-        catch(IOException e){
-            System.out.println("couldn't read from the file.");
-            e.printStackTrace();
-        }
-        finally {
-            return line;
-        }
-    }
-
-
 }
