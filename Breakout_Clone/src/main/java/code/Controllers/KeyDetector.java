@@ -5,10 +5,17 @@ import code.Views.GameBoard;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**This controller detects certain keyboard inputs during gameplay
+ * and handles what to do in each case.
+ */
 public class KeyDetector implements KeyListener {
 
     private final GameBoard gameBoard;
 
+    /**
+     *Creates a key detector owned by specified gameBoard.
+     * @param whichBoard The owner of the key detector.
+     */
     public KeyDetector(GameBoard whichBoard) {
         gameBoard = whichBoard;
     }
@@ -17,6 +24,11 @@ public class KeyDetector implements KeyListener {
     public void keyTyped(KeyEvent keyEvent) {
     }
 
+    /**
+     * This method finds out what key was pressed and acts based on that.
+     * @param e The event that called this method. The key pressed is
+     *          extracted from this.
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int code=e.getKeyCode();
@@ -39,7 +51,6 @@ public class KeyDetector implements KeyListener {
             gameBoard.getGameTimer().getGameTimer().stop();
         }
         if(code==KeyEvent.VK_BACK_SPACE){ //originally f1
-            //if(e.isAltDown() && e.isShiftDown())
             gameBoard.getDebugConsole().setVisible(true);
         }
     }

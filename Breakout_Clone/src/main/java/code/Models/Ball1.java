@@ -4,6 +4,10 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
+/**
+ * This class is a child of Ball and therefore calls upon its parent
+ * to construct a Ball object.
+ */
 public class Ball1 extends Ball {
 
 
@@ -22,11 +26,22 @@ public class Ball1 extends Ball {
         return DEF_BORDER_COLOR;
     }
 
+    /**
+     * This constructs a Ball object with the defined parameters.
+     * @param center This is where the center of the Ball object will be.
+     */
     public Ball1(Point2D center){
         super(center,DEF_RADIUS,DEF_RADIUS,DEF_INNER_COLOR,DEF_BORDER_COLOR);
     }
 
-
+    /**
+     * This method creates an ellipse that represents the Ball object.
+     * @param center This is where the center of the ball is, i.e. its position.
+     * @param radiusA This is the width of the ball.
+     * @param radiusB This is the height of the ball.
+     * @return This method returns an ellipse that represents the Ball object
+     * and can be drawn.
+     */
     @Override
     protected Shape makeBall(Point2D center, int radiusA, int radiusB) {
 

@@ -8,15 +8,28 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * This class detects certain mouse inputs during gameplay
+ * and handles what to do in each case.
+ */
 public class MouseDetector implements MouseListener, MouseMotionListener {
 
     private final GameBoard gameBoard;
 
-
+    /**
+     * This constructs a mouse detector owned by a specific gameBoard.
+     * @param whichBoard This specifies which gameBoard called and owns
+     *                   the mouse detector.
+     */
     public MouseDetector(GameBoard whichBoard){
         gameBoard = whichBoard;
     }
 
+    /**
+     * This method handles what to do when the mouse is clicked.
+     * @param mouseEvent The event that called this method. Where the
+     *                   mouse was clicked is extracted from this.
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -74,6 +87,12 @@ public class MouseDetector implements MouseListener, MouseMotionListener {
 
     }
 
+    /**
+     * This method changes the cursor from its default state to the pointed
+     * index finger when its detected to be over certain positions.
+     * @param mouseEvent The event that called this method. Where the mouse was
+     *                   moved will be extracted from this method.
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
