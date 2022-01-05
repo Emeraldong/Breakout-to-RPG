@@ -14,15 +14,15 @@ public class Paddle {
 
     public static final int DEF_MOVE_AMOUNT = 5;
 
-    private Rectangle paddleFace;
-    private Point ballPoint;
-    private Dimension size;
+    private final Rectangle paddleFace;
+    private final Point ballPoint;
+    private final Dimension size;
 
     private int moveAmount;
-    private int min;
-    private int max;
+    private final int min;
+    private final int max;
 
-    private LoadPNG loader;
+    private final LoadPNG loader;
 
     public Dimension getSize() {
         return size;

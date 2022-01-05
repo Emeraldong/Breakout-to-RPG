@@ -22,10 +22,10 @@ public class Brick2 extends Brick {
     private static final int CLAY_STRENGTH = 1;
 
     private Image image;
-    private Dimension size;
+    private final Dimension size;
     private BufferedImage bi;
-    private Point point;
-    private LoadPNG loader;
+    private final Point point;
+    private final LoadPNG loader;
 
     @Override
     public LoadPNG getLoader() {

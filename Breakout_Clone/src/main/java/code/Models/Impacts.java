@@ -4,8 +4,8 @@ import java.awt.geom.Point2D;
 
 public class Impacts {
 
-    private Wall myWall;
-    private Ball ball;
+    private final Wall myWall;
+    private final Ball ball;
 
     public Impacts(Wall wall){
         myWall = wall;

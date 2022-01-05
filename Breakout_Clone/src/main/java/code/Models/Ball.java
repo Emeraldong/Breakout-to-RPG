@@ -8,15 +8,15 @@ abstract public class Ball {
 
     private Shape ballFace;
 
-    private Point2D center;
+    private final Point2D center;
 
-    private Point2D up;
-    private Point2D down;
-    private Point2D left;
-    private Point2D right;
+    private final Point2D up;
+    private final Point2D down;
+    private final Point2D left;
+    private final Point2D right;
 
-    private Color border;
-    private Color inner;
+    private final Color border;
+    private final Color inner;
 
     private int speedX;
     private int speedY;
@@ -61,6 +61,14 @@ abstract public class Ball {
 
     public abstract Color getBorderColor();
 
+    /**
+     *
+     * @param center
+     * @param radiusA
+     * @param radiusB
+     * @param inner
+     * @param border
+     */
     public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
         this.center = center;
 

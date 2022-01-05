@@ -19,13 +19,13 @@ public class Brick1 extends Brick {
     private static final Color DEF_BORDER = new Color(217, 199, 175);
     private static final int CEMENT_STRENGTH = 2;
 
-    private Crack crack;
+    private final Crack crack;
     private Shape brickFace;
-    private Point point;
+    private final Point point;
 
     private int score;
 
-    private LoadPNG loader;
+    private final LoadPNG loader;
 
     @Override
     public Shape getBrick() {

@@ -14,15 +14,15 @@ public class JFXPanelMainMenu {
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
 
-    private JFXPanel jfxPanel;
-    private GameFrame owner;
+    private final JFXPanel jfxPanel;
+    private final GameFrame owner;
 
     private Button start;
     private Button exit;
     private Button score;
     private Button tutor;
 
-    private JavaFXMainMenuController myController;
+    private final JavaFXMainMenuController myController;
 
     public JFXPanel getJfxPanel() {
         return jfxPanel;

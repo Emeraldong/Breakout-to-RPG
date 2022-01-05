@@ -1,12 +1,9 @@
 package code.Views;
 
 import code.GameBoard;
-import code.Models.Ball;
-import code.Models.Brick;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 import java.awt.image.*;
 import java.io.IOException;
 
@@ -21,11 +18,11 @@ public class LoadPNG {
     private Image image;
     private Image playerImage;
     private Image ballImage;
-    private Image backgrounds[];
+    private Image[] backgrounds;
     private BufferedImage bi;
 
-    private Point point;
-    private Dimension size;
+    private final Point point;
+    private final Dimension size;
 
     private GameBoard mastersMaster;
 

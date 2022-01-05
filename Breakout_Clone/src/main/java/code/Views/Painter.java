@@ -29,18 +29,18 @@ public class Painter extends JPanel {
     private static final String EXIT = "Back to Main Menu";
     private static final String PAUSE = "Game Paused";
 
-    private Font menuFont;
-    private Font messageFont;
+    private final Font menuFont;
+    private final Font messageFont;
     private static final int TEXT_SIZE = 30; // originally 30
 
     private Rectangle continueButtonRect;
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
 
-    private BufferedImage wallOfBricks;
+    private final BufferedImage wallOfBricks;
     private BufferedImage playField;
 
-    private LoadPNG loader;
+    private final LoadPNG loader;
 
     private static final Color MENU_COLOR = new Color(0,255,0);
 

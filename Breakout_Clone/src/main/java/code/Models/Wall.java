@@ -14,15 +14,15 @@ public class Wall{
     private static final int INITIAL_BALLS = 3;
     private static final int INITIAL_LEVEL = -1;
 
-    private Random rnd;
-    private Rectangle area;
+    private final Random rnd;
+    private final Rectangle area;
 
     private Brick[] bricks;
     private Ball ball;
-    private Paddle player;
-    private Brick[][] levels;
-    private Point startPoint;
-    private Impacts impacts;
+    private final Paddle player;
+    private final Brick[][] levels;
+    private final Point startPoint;
+    private final Impacts impacts;
 
     private int level;
     private int brickCount;

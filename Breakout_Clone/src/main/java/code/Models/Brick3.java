@@ -20,14 +20,14 @@ public class Brick3 extends Brick {
     private static final int STEEL_STRENGTH = 1;
     private static final double STEEL_PROBABILITY = 0.4;
 
-    private Random rnd;
-    private Shape brickFace;
-    private Point point;
+    private final Random rnd;
+    private final Shape brickFace;
+    private final Point point;
 
     private int score;
     private int storedScore;
 
-    private LoadPNG loader;
+    private final LoadPNG loader;
     public LoadPNG getLoader() {
         return loader;
     }

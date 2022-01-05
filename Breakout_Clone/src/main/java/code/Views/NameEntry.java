@@ -17,8 +17,8 @@ public class NameEntry {
     private static final String question = "WHAT IS YOUR NAME?";
     private static final String announcer = "YOUR SCORE IS ";
 
-    private JFXPanel jfxPanel;
-    private GameFrame owner;
+    private final JFXPanel jfxPanel;
+    private final GameFrame owner;
 
     private int score;
     private String displayText;
@@ -26,7 +26,7 @@ public class NameEntry {
     private TextField textField;
     private Text scoreAnnouncer;
 
-    private NameEntryControl controller;
+    private final NameEntryControl controller;
 
     public JFXPanel getJfxPanel() {
         return jfxPanel;

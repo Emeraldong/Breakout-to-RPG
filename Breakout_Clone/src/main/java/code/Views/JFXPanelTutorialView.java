@@ -9,10 +9,10 @@ import javafx.scene.layout.*;
 
 public class JFXPanelTutorialView {
 
-    private JFXPanel jfxPanel;
-    private GameFrame owner;
+    private final JFXPanel jfxPanel;
+    private final GameFrame owner;
 
-    private TutorialViewControl controller;
+    private final TutorialViewControl controller;
 
     public JFXPanel getJfxPanel() {
         return jfxPanel;
@@ -34,8 +34,8 @@ public class JFXPanelTutorialView {
     private Scene createScene(){
         VBox root = new VBox();
         initializeBackground(root);
-        root.setOnKeyReleased(e->controller.backToMainMenu(e));
-        root.setOnMouseClicked(e-> controller.backToMainMenu(e));
+        root.setOnKeyReleased(e->controller.backToMainMenu());
+        root.setOnMouseClicked(e-> controller.backToMainMenu());
 
 
         return new Scene(root);

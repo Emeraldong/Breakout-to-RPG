@@ -17,13 +17,13 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
     private Timer gameTimer;
 
-    private Wall wall;
-    private KeyDetector keyDetector;
-    private MouseDetector mouseDetector;
-    private Painter painter;
-    private DebugConsole debugConsole;
+    private final Wall wall;
+    private final KeyDetector keyDetector;
+    private final MouseDetector mouseDetector;
+    private final Painter painter;
+    private final DebugConsole debugConsole;
 
-    private GameFrame myOwner;
+    private final GameFrame myOwner;
 
     private String message;
 

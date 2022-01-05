@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 
 public class InitializeGame {
 
-    private Wall wallPrime;
+    private final Wall wallPrime;
 
     public static final int LEVELS_COUNT = 8;
 

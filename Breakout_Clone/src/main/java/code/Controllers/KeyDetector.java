@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 public class KeyDetector implements KeyListener {
 
-    private GameBoard gameBoard;
+    private final GameBoard gameBoard;
 
     public KeyDetector(GameBoard whichBoard) {
         gameBoard = whichBoard;

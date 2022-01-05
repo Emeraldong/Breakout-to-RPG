@@ -9,11 +9,11 @@ public class NameEntryControl {
 
     private static final String noName = "They gave no name...";
 
-    private GameFrame myGameFrame;
-    private NameEntry myOwner;
+    private final GameFrame myGameFrame;
+    private final NameEntry myOwner;
 
 
-    private ScoreFile scoreFile;
+    private final ScoreFile scoreFile;
 
     private int score;
     private String name;

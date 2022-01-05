@@ -7,7 +7,7 @@ public class ScoreViewControl {
 
     GameFrame myGameFrame;
 
-    public ScoreViewControl(GameFrame gameFrame, JFXPanelScoreView myOwner){
+    public ScoreViewControl(GameFrame gameFrame){
         myGameFrame = gameFrame;
     }
 

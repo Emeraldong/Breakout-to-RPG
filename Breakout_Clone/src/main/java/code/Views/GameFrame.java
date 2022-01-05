@@ -17,15 +17,13 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     }
 
     private GameBoard gameBoard;
-    private MainMenuScreen menuScreen;
-    private ScoreViewer scoreFile;
 
     private JFXPanelMainMenu jfxPanelMainMenu;
     private JFXPanelScoreView jfxPanelScoreView;
     private JFXPanelTutorialView jfxTutor;
     private NameEntry nameEntry;
 
-    private CardLayout cardLayout;
+    private final CardLayout cardLayout;
     private boolean gaming;
 
 
@@ -41,8 +39,6 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     public CardLayout getCardLayout() {
         return cardLayout;
     }
-
-    public ScoreViewer getScoreFile(){ return scoreFile;}
 
     public NameEntry getNameEntry(){
         return nameEntry;
@@ -91,7 +87,6 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     public void addCards(){
         gameBoard = new GameBoard(this, this);
-        //scoreFile = new ScoreViewer(this);
         jfxPanelMainMenu = new JFXPanelMainMenu(this);
         jfxTutor = new JFXPanelTutorialView(this);
         jfxPanelScoreView = new JFXPanelScoreView(this);

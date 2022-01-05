@@ -10,7 +10,7 @@ import java.awt.event.MouseMotionListener;
 
 public class MouseDetector implements MouseListener, MouseMotionListener {
 
-    private GameBoard gameBoard;
+    private final GameBoard gameBoard;
 
 
     public MouseDetector(GameBoard whichBoard){

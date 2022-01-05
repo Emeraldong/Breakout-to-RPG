@@ -26,20 +26,20 @@ abstract public class Brick  {
     public static final int RIGHT_IMPACT = 400;
 
 
-    private String name;
+    private final String name;
 
 
 
-    private Shape brickFace;
-    private Color border;
-    private Color inner;
+    private final Shape brickFace;
+    private final Color border;
+    private final Color inner;
 
-    private int fullStrength;
+    private final int fullStrength;
     private int strength;
     private boolean broken;
 
-    private Point point;
-    private Dimension size;
+    private final Point point;
+    private final Dimension size;
     private LoadPNG loader;
 
     public final boolean isBroken(){

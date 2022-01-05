@@ -6,18 +6,15 @@ import javafx.event.Event;
 
 public class TutorialViewControl {
 
-    private JFXPanelTutorialView myTutorialView;
-    private GameFrame myGameFrame;
+    private final JFXPanelTutorialView myTutorialView;
+    private final GameFrame myGameFrame;
 
     public TutorialViewControl(GameFrame gameFrame, JFXPanelTutorialView jfxPanelScoreView){
         myGameFrame = gameFrame;
         myTutorialView = jfxPanelScoreView;
     }
 
-    public void backToMainMenu(Event event) {
+    public void backToMainMenu() {
         myGameFrame.getCardLayout().show(myGameFrame.getContentPane(),"fxMenu");
-        //gameBoard.requestFocus();
         }
-
-        //if (source.equals(myOwner))
     }

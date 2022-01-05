@@ -16,13 +16,13 @@ import javafx.scene.text.Text;
 
 public class JFXPanelScoreView {
 
-    private GameFrame owner;
+    private final GameFrame owner;
 
-    private JFXPanel jfxPanel;
+    private final JFXPanel jfxPanel;
 
-    private ScoreFile scoreList;
+    private final ScoreFile scoreList;
 
-    private ScoreViewControl controller;
+    private final ScoreViewControl controller;
 
     private VBox root;
 
@@ -42,7 +42,7 @@ public class JFXPanelScoreView {
         Platform.runLater(()->{
             jfxPanel.setScene(createScene());
         });
-        controller = new ScoreViewControl(owner,this);
+        controller = new ScoreViewControl(owner);
     }
 
     private Scene createScene(){

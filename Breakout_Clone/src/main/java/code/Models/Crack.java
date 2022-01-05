@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Crack{
 
-    private Brick thisBrickIsForTheStinkingMakeCrackMethod;
+    private final Brick thisBrickIsForTheStinkingMakeCrackMethod;
     private Shape brickFace;
     private static Random rnd;
     private static final int CRACK_SECTIONS = 3;

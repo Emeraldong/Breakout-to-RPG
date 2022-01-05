@@ -11,8 +11,8 @@ public class ScoreFile {
 
     private static final int numberOfHighScores = 5;
 
-    private int[] highestScores;
-    private String[] highestScoreStrings;
+    private final int[] highestScores;
+    private final String[] highestScoreStrings;
 
     private String scores;
 
