@@ -1,4 +1,4 @@
-package code;
+package code.Views;
 
 import code.Controllers.KeyDetector;
 import code.Controllers.MouseDetector;

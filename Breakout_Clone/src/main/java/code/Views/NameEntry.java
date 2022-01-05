@@ -69,7 +69,7 @@ public class NameEntry {
 
     private void initializeBackground(VBox root){
         BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/nameentry.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/Images/nameentry.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
         root.setBackground(background);

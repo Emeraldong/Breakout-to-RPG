@@ -1,6 +1,6 @@
 package code.Controllers;
 
-import code.GameBoard;
+import code.Views.GameBoard;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

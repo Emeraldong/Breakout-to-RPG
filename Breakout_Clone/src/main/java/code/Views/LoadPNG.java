@@ -1,7 +1,5 @@
 package code.Views;
 
-import code.GameBoard;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -54,7 +52,7 @@ public class LoadPNG {
     }
     public void loadImagePlayer() {
         try {
-            BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/paddle.png"));
+            BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/Images/paddle.png"));
             playerImage = bufferedImage.getScaledInstance((int)size.getWidth(),(int)size.getHeight(), Image.SCALE_SMOOTH);
             bi = new BufferedImage(playerImage.getWidth(null),playerImage.getHeight(null),BufferedImage.TYPE_INT_ARGB);
         }
@@ -68,7 +66,7 @@ public class LoadPNG {
         for (int i = 0;i < NUM_OF_BACKGROUNDS; i++) {
             if(i==0) {
                 try {
-                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield0.png"));
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/Images/playfield0.png"));
                     backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -76,7 +74,7 @@ public class LoadPNG {
             }
             else if(i==1){
                 try {
-                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield1.png"));
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/Images/playfield1.png"));
                     backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -84,7 +82,7 @@ public class LoadPNG {
             }
             else if(i==2){
                 try {
-                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield2.png"));
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/Images/playfield2.png"));
                     backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -92,7 +90,7 @@ public class LoadPNG {
             }
             else if(i==3){
                 try {
-                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield3.png"));
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/Images/playfield3.png"));
                     backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -100,7 +98,7 @@ public class LoadPNG {
             }
             else if(i==4){
                 try {
-                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield4.png"));
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/Images/playfield4.png"));
                     backgrounds[i] = bufferedImage.getScaledInstance(DEF_WIDTH, DEF_HEIGHT, Image.SCALE_SMOOTH);
                 } catch (IOException e) {
                     e.printStackTrace();

@@ -9,7 +9,6 @@ module Breakout.Clone {
     requires javafx.swing;*/
 
 
-    exports code;
     exports code.Models;
     exports code.Controllers;
     exports code.Views;

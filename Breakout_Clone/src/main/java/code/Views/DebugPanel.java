@@ -1,6 +1,5 @@
 package code.Views;
 
-import code.GameBoard;
 import code.Models.Wall;
 
 import javax.swing.*;

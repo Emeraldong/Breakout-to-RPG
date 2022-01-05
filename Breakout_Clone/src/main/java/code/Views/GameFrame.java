@@ -1,7 +1,5 @@
 package code.Views;
 
-import code.GameBoard;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;

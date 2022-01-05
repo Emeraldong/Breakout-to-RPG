@@ -8,7 +8,7 @@ public class Brick2 extends Brick {
 
     private static final int SCORE = 100;
     private static final String NAME = "Clay Brick";
-    private static final String BRICKPNG = "/brick2.png";
+    private static final String BRICKPNG = "/Images/brick2.png";
     private static final Color DEF_INNER = new Color(178, 34, 34).darker();
     private static final Color DEF_BORDER = Color.BLACK;
     private static final int CLAY_STRENGTH = 1;

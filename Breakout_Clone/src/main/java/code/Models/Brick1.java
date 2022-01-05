@@ -12,8 +12,8 @@ public class Brick1 extends Brick {
     private static final int SCORE_CRACKED = 50;
     private static final int SCORE = 200;
     private static final String NAME = "Cement Brick";
-    private static final String BRICKPNG = "/brick1.png";
-    private static final String CRACKEDBRICKPNG = "/brick1_cracked.png";
+    private static final String BRICKPNG = "/Images/brick1.png";
+    private static final String CRACKEDBRICKPNG = "/Images/brick1_cracked.png";
     private static final Color DEF_INNER = new Color(147, 147, 147);
     private static final Color DEF_BORDER = new Color(217, 199, 175);
     private static final int CEMENT_STRENGTH = 2;

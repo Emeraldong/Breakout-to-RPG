@@ -1,6 +1,6 @@
 package code.Controllers;
 
-import code.GameBoard;
+import code.Views.GameBoard;
 import javafx.application.Platform;
 
 import java.awt.*;

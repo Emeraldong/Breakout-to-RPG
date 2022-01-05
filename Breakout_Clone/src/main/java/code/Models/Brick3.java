@@ -13,7 +13,7 @@ public class Brick3 extends Brick {
     private static final int SCORE = 100;
     private static final int CRACKED = 200;
     private static final String NAME = "Steel Brick";
-    private static final String BRICKPNG = "/brick3.png";
+    private static final String BRICKPNG = "/Images/brick3.png";
     private static final Color DEF_INNER = new Color(203, 203, 201);
     private static final Color DEF_BORDER = Color.BLACK;
     private static final int STEEL_STRENGTH = 1;

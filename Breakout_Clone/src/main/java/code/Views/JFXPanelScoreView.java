@@ -60,7 +60,7 @@ public class JFXPanelScoreView {
         root.setAlignment(Pos.BOTTOM_CENTER);
 
         BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/scores.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/Images/scores.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
 
         root.setBackground(background);

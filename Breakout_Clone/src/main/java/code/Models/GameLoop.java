@@ -1,6 +1,6 @@
 package code.Models;
 
-import code.GameBoard;
+import code.Views.GameBoard;
 import code.Views.GameFrame;
 
 import javax.swing.*;
