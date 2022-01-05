@@ -94,8 +94,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         //scoreFile = new ScoreViewer(this);
         jfxPanelMainMenu = new JFXPanelMainMenu(this);
         jfxTutor = new JFXPanelTutorialView(this);
-        nameEntry = new NameEntry(this);
         jfxPanelScoreView = new JFXPanelScoreView(this);
+        nameEntry = new NameEntry(this);
         this.add(gameBoard,"game"/*BorderLayout.CENTER*/);
         //this.add(scoreFile,"scores");
         this.add(jfxPanelMainMenu.getJfxPanel(),"fxMenu");
