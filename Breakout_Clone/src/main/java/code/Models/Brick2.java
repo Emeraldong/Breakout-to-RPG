@@ -1,16 +1,8 @@
 package code.Models;
 
-import code.Models.Brick;
-
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.Point;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-
 import code.Views.LoadPNG;
+
+import java.awt.*;
 
 public class Brick2 extends Brick {
 
@@ -21,9 +13,6 @@ public class Brick2 extends Brick {
     private static final Color DEF_BORDER = Color.BLACK;
     private static final int CLAY_STRENGTH = 1;
 
-    private Image image;
-    private final Dimension size;
-    private BufferedImage bi;
     private final Point point;
     private final LoadPNG loader;
 
@@ -40,7 +29,6 @@ public class Brick2 extends Brick {
     public Brick2(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CLAY_STRENGTH);
         loader = new LoadPNG(point, size);
-        this.size = size;
         this.point = point;
         loader.loadImageBrick(BRICKPNG);
     }

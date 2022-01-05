@@ -1,6 +1,5 @@
 package code.Models;
 
-import code.Models.Ball;
 import code.Views.LoadPNG;
 
 import java.awt.*;

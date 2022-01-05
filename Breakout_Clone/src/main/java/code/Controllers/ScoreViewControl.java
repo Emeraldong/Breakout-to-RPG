@@ -1,7 +1,6 @@
 package code.Controllers;
 
 import code.Views.GameFrame;
-import code.Views.JFXPanelScoreView;
 
 public class ScoreViewControl {
 

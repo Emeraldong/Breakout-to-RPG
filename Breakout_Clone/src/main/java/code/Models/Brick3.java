@@ -1,7 +1,6 @@
 package code.Models;
 
-import code.Models.Brick;
-import code.Views.LoadPNG;
+ import code.Views.LoadPNG;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

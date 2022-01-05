@@ -4,7 +4,7 @@ import code.GameBoard;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class LoadPNG {

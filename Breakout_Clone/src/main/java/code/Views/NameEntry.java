@@ -1,7 +1,6 @@
 package code.Views;
 
 import code.Controllers.NameEntryControl;
-import code.Controllers.TutorialViewControl;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.geometry.Pos;

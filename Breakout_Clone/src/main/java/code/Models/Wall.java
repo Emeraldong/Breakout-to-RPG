@@ -1,7 +1,6 @@
 package code.Models;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.Random;
 
 public class Wall{

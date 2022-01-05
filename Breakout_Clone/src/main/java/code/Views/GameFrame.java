@@ -1,11 +1,11 @@
 package code.Views;
 
+import code.GameBoard;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
-
-import code.GameBoard;
 
 
 public class GameFrame extends JFrame implements WindowFocusListener {

@@ -1,8 +1,8 @@
 package code.Views;
 
+import code.GameBoard;
 import code.Models.Ball;
 import code.Models.Brick;
-import code.GameBoard;
 import code.Models.Paddle;
 
 import javax.swing.*;

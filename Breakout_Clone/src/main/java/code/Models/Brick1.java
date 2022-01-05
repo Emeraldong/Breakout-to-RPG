@@ -5,7 +5,6 @@ import code.Views.LoadPNG;
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
 
 
 public class Brick1 extends Brick {

@@ -2,7 +2,6 @@ package code.Controllers;
 
 import code.Views.GameFrame;
 import code.Views.JFXPanelTutorialView;
-import javafx.event.Event;
 
 public class TutorialViewControl {
 
