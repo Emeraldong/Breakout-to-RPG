@@ -21,13 +21,6 @@ abstract public class Ball {
     private int speedX;
     private int speedY;
 
-    public Color getBorderColor(){
-        return border;
-    }
-
-    public Color getInnerColor(){
-        return inner;
-    }
 
     public Point2D getPosition(){
         return center;
@@ -57,11 +50,6 @@ abstract public class Ball {
         return right;
     }
 
-    public void setSpeed(int x,int y){
-        speedX = x;
-        speedY = y;
-    }
-
     public void setXSpeed(int s){
         speedX = s;
     }
@@ -69,7 +57,9 @@ abstract public class Ball {
     public void setYSpeed(int s){
         speedY = s;
     }
+    public abstract Color getInnerColor();
 
+    public abstract Color getBorderColor();
 
     public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
         this.center = center;
