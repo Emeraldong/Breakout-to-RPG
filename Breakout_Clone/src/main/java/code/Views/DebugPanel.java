@@ -1,16 +1,19 @@
 package code.Views;
 
+import code.GameBoard;
 import code.Models.Wall;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DebugPanel extends JPanel {
 
     private static final Color DEF_BKG = Color.WHITE;
 
+    private GameBoard gameBoard;
 
     private JButton skipLevel;
     private JButton resetBalls;
@@ -20,13 +23,15 @@ public class DebugPanel extends JPanel {
 
     private Wall wall;
 
-    public DebugPanel(Wall wall){
+    public DebugPanel(Wall wall, GameBoard gameBoard){
 
         this.wall = wall;
+        this.gameBoard = gameBoard;
 
         initialize();
 
         skipLevel = makeButton("Skip Level",e -> wall.nextLevel());
+        skipLevel.addActionListener(e -> gameBoard.getPainter().getLoader().setLevel(wall.getLevel()));
         resetBalls = makeButton("Reset Balls",e -> wall.resetBallCount());
 
         ballXSpeed = makeSlider(-4,4,e -> wall.setBallXSpeed(ballXSpeed.getValue()));
