@@ -9,7 +9,10 @@ import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.image.BufferedImage;
 
-
+/**
+ * This class is the painter, another very important class as it draws the objects the
+ * player sees.
+ */
 public class Painter extends JPanel {
 
     private GameBoard myOwner;
@@ -59,7 +62,11 @@ public class Painter extends JPanel {
         return loader;
     }
 
-
+    /**
+     * This constructs a Painter object and initializes the fonts to use.
+     * @param owner This is the GameBoard that owns this Painter.
+     * @param message This is a String to be displayed.
+     */
     public Painter(GameBoard owner, String message){
         myOwner = owner;
         this.message = message;
@@ -75,17 +82,29 @@ public class Painter extends JPanel {
         this.setFocusable(true);
     }
 
+    /**
+     * This updates the painter.
+     * @param owner This is the GameBoard that owns this Painter.
+     * @param message This is a String to be displayed.
+     */
     public void updater(GameBoard owner,String message){
         myOwner = owner;
         this.message=message;
         repaint();
     }
 
+    /**
+     * This sets width and height.
+     */
     public void setWidthAndHeight(){
         width = myOwner.getWidth();
         height = myOwner.getHeight();
     }
 
+    /**
+     * This method draws everything.
+     * @param g This is a graphics object used to draw.
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -114,6 +133,10 @@ public class Painter extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * This method clears the screen.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void clear(Graphics2D g2d){
         Color tmp = g2d.getColor();
         g2d.setColor(BG_COLOR);
@@ -121,15 +144,29 @@ public class Painter extends JPanel {
         g2d.setColor(tmp);
     }
 
+    /**
+     * This method draws the background.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void drawBackground(Graphics2D g2d){
         g2d.drawImage(loader.displayBackground(wallOfBricks,g2d),0,0,this);
     }
 
+    /**
+     * This method draws a Brick.
+     * @param brick This is the brick to draw.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void drawBrick(Brick brick, Graphics2D g2d) {
         BufferedImage aNewBrick = new BufferedImage((int)brick.getSize().getWidth(),(int)brick.getSize().getHeight(),BufferedImage.TYPE_INT_ARGB);
         g2d.drawImage(brick.getLoader().displayBrick(aNewBrick, g2d),brick.getPointX(),brick.getPointY(),this);
     }
 
+    /**
+     * This method draws a Ball
+     * @param ball This is the ball to draw.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void drawBall(Ball ball, Graphics2D g2d){
         Color tmp = g2d.getColor();
 
@@ -145,15 +182,28 @@ public class Painter extends JPanel {
         //g2d.drawImage(ball.getLoader().displayBall(wallOfBricks,g2d),(int)ball.getPosition().getX(),(int)ball.getPosition().getY(),this );
     }
 
+    /**
+     * This method draws a Paddle.
+     * @param p This is a Paddle to draw.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void drawPlayer(Paddle p, Graphics2D g2d){
         g2d.drawImage(p.getLoader().displayPlayer(wallOfBricks, g2d),(int)(p.getBallPoint().getX() - (p.getSize().getWidth() / 2)),(int) p.getBallPoint().getY(),this);
     }
 
+    /**
+     * This draws the pause menu.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void drawMenu(Graphics2D g2d){
         obscureGameBoard(g2d);
         drawPauseMenu(g2d);
     }
 
+    /**
+     * This method darkens the game and brings to focus the pause menu.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void obscureGameBoard(Graphics2D g2d){
 
         Composite tmp = g2d.getComposite();
@@ -169,6 +219,10 @@ public class Painter extends JPanel {
         g2d.setColor(tmpColor);
     }
 
+    /**
+     * This method is called to draw the pause menu.
+     * @param g2d This is a Graphics2D object used to draw.
+     */
     public void drawPauseMenu(Graphics2D g2d){
         Font tmpFont = g2d.getFont();
         Color tmpColor = g2d.getColor();

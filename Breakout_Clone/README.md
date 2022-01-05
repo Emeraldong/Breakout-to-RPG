@@ -1,2 +1,15 @@
-# Breakout_Clone 
-https://en.wikipedia.org/wiki/Breakout_(video_game)
+Big Changes Made:
+
+-MVC Pattern applied vigourously.
+
+-Painter moved out into its own class.
+
+-New sprites
+
+-New levels
+
+-High Score system
+
+-Maven used
+
+-Small Class size

@@ -11,6 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
+/**
+ * This class is used to let players input their names after finishing a game.
+ */
 public class NameEntry {
 
     private static final String question = "WHAT IS YOUR NAME?";
@@ -35,7 +38,10 @@ public class NameEntry {
         return textField;
     }
 
-
+    /**
+     * This constructs a NameEntry object.
+     * @param gameFrame This is the GameFrame that owns this JFXPanel.
+     */
     public NameEntry(GameFrame gameFrame){
         owner = gameFrame;
         jfxPanel = new JFXPanel();
@@ -46,6 +52,10 @@ public class NameEntry {
         controller = new NameEntryControl(owner,this);
     }
 
+    /**
+     * This method creates a Scene on which textfields are added.
+     * @return
+     */
     public Scene createScene(){
         VBox root = new VBox();
         initializeBackground(root);
@@ -67,6 +77,10 @@ public class NameEntry {
         return new Scene(root);
     }
 
+    /**
+     * This method initializes the background.
+     * @param root this is the VBox on which to set the background in.
+     */
     private void initializeBackground(VBox root){
         BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
         BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/Images/nameentry.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
@@ -76,6 +90,10 @@ public class NameEntry {
 
     }
 
+    /**
+     * This method announces the score of the player.
+     * @param score This is the score of the player.
+     */
     public void setScore(int score){
         this.score = score;
         displayText = announcer + "" + score;
