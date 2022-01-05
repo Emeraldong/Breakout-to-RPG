@@ -3,18 +3,16 @@ package code.Views;
 import code.Controllers.JavaFXMainMenuController;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
 public class JFXPanelMainMenu {
+    private static final int DEF_WIDTH = 600;
+    private static final int DEF_HEIGHT = 450;
 
     private JFXPanel jfxPanel;
     private GameFrame owner;
@@ -85,7 +83,7 @@ public class JFXPanelMainMenu {
         root.setSpacing(50);
         root.setAlignment(Pos.BASELINE_CENTER);
         BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/playfield0.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/playfield0.png")),DEF_WIDTH,DEF_HEIGHT,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
         root.setBackground(background);
 
