@@ -67,7 +67,7 @@ public class ScoreFile {
                 newline = line.replaceAll("\\D+","");
                 int numbers = Integer.valueOf(newline);
                 for (int i = 0;i < numberOfHighScores; i ++){
-                    if(numbers>highestScores[i]){
+                    if(numbers>=highestScores[i]){
                         highestScores[i] = numbers;
                         highestScoreStrings[i] = line;
                         break;
