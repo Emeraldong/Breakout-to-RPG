@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Breakout_Clone" target="17" />
+      <module name="Breakout_Clone" target="15" />
     </bytecodeTargetLevel>
   </component>
 </project>

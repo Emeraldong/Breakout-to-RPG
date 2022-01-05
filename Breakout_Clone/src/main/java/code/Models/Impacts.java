@@ -39,21 +39,21 @@ public class Impacts {
                 case Brick.UP_IMPACT:
                     ball.reverseY();
                     myWall.scoreCalc(b);
-                    return b.setImpact(ball.getDown(), Crack.UP);
+                    return b.setImpact(ball.getDown());
                 case Brick.DOWN_IMPACT:
                     ball.reverseY();
                     myWall.scoreCalc(b);
-                    return b.setImpact(ball.getUp(),Crack.DOWN);
+                    return b.setImpact(ball.getUp());
 
                 //Horizontal Impact
                 case Brick.LEFT_IMPACT:
                     ball.reverseX();
                     myWall.scoreCalc(b);
-                    return b.setImpact(ball.getRight(),Crack.RIGHT);
+                    return b.setImpact(ball.getRight());
                 case Brick.RIGHT_IMPACT:
                     ball.reverseX();
                     myWall.scoreCalc(b);
-                    return b.setImpact(ball.getLeft(),Crack.LEFT);
+                    return b.setImpact(ball.getLeft());
             }
         }
         return false;

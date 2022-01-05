@@ -28,7 +28,7 @@ public class JFXPanelTutorialView {
         Platform.runLater(()->{
             jfxPanel.setScene(createScene());
         });
-        controller = new TutorialViewControl(owner,this);
+        controller = new TutorialViewControl(owner);
     }
 
     private Scene createScene(){

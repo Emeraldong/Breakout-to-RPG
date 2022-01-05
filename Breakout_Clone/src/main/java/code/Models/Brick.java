@@ -1,38 +1,29 @@
 package code.Models;
 
-import code.Models.Ball;
 import code.Views.LoadPNG;
 
 import java.awt.*;
 import java.awt.Point;
 import java.awt.geom.Point2D;
-import java.awt.image.BufferedImage;
 
+/**
+ * This represents an abstract Brick that is called from its children
+ * to construct a Brick object.
+ */
 abstract public class Brick  {
 
     public Shape getBrickFace() {
         return brickFace;
     }
-
-    public static final int MIN_CRACK = 1;
-    public static final int MAX_CRACK = 3;
     public static final int DEF_CRACK_DEPTH = 1;
     public static final int DEF_STEPS = 35;
-
 
     public static final int UP_IMPACT = 100;
     public static final int DOWN_IMPACT = 200;
     public static final int LEFT_IMPACT = 300;
     public static final int RIGHT_IMPACT = 400;
 
-
-    private final String name;
-
-
-
     private final Shape brickFace;
-    private final Color border;
-    private final Color inner;
 
     private final int fullStrength;
     private int strength;
@@ -55,13 +46,22 @@ abstract public class Brick  {
     }
 
     public abstract LoadPNG getLoader();
+    public abstract Shape getBrick();
+    public abstract int getPointX();
+    public abstract int getPointY();
+    public abstract int giveScore();
 
-    public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
+    /**
+     * This constructs a Brick object with the given parameters.
+     * @param name This is the name of the Brick object.
+     * @param pos This is the position of the Brick object.
+     * @param size This is the dimension of the Brick object.
+     * @param strength This is the strength of the Brick object,
+     *                 or how many hits it can take before breaking.
+     */
+    public Brick(String name, Point pos, Dimension size, int strength){
         broken = false;
-        this.name = name;
         this.brickFace = makeBrickFace(pos,size);
-        this.border = border;
-        this.inner = inner;
         this.fullStrength = this.strength = strength;
         this.point = pos;
         this.size = size;
@@ -69,25 +69,24 @@ abstract public class Brick  {
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
-    public  boolean setImpact(Point2D point , int dir){
+    /**
+     * This method will break a Brick that is unbroken.
+     * @param point This is where the Brick got hit.
+     *
+     * @return This returns broken, which if true means the Brick is broken.
+     */
+    public boolean setImpact(Point2D point){
         if(broken)
             return false;
         impact();
         return  broken;
     }
 
-    public abstract Shape getBrick();
-    public abstract int getPointX();
-    public abstract int getPointY();
-
-    public Color getBorderColor(){
-        return  border;
-    }
-    public Color getInnerColor(){
-        return inner;
-    }
-
-
+    /**
+     * This method finds out where the Brick got hit by the ball.
+     * @param b This is the ball that hit the Brick.
+     * @return This returns which part of the Brick the ball hit.
+     */
     public final int findImpact(Ball b){
         if(broken)
             return 0;
@@ -103,17 +102,22 @@ abstract public class Brick  {
         return out;
     }
 
+    /**
+     * This method returns the Brick object to full strength.
+     */
     public void repair() {
         broken = false;
         strength = fullStrength;
     }
 
+    /**
+     * This method decreases the strength of the Brick and breaks it if
+     * its strength is low enough.
+     */
     public void impact(){
         strength--;
         broken = (strength == 0);
     }
-
-    abstract public int giveScore();
 
 }
 
