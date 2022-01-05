@@ -79,7 +79,7 @@ public class NameEntry {
 
     public void setScore(int score){
         this.score = score;
-        displayText = announcer + " " + score;
+        displayText = announcer + "" + score;
         scoreAnnouncer.setText(displayText);
     }
 

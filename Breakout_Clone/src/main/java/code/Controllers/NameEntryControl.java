@@ -18,20 +18,16 @@ public class NameEntryControl {
     private int score;
     private String name;
 
-    public ScoreFile getScoreFile() {
-        return scoreFile;
-    }
-
     public NameEntryControl(GameFrame gameFrame, NameEntry nameEntry){
         myGameFrame = gameFrame;
         myOwner = nameEntry;
-        scoreFile = new ScoreFile();
+        scoreFile = gameFrame.getJfxPanelScoreView().getScoreList();
     }
 
     public void submitName(int score){
         this.score = score;
         name = String.valueOf(myOwner.getTextField().getText());
-        if (name == ""){
+        if (name.equals("")){
             name = noName;
         }
 

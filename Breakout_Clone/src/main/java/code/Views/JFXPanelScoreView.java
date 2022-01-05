@@ -26,6 +26,9 @@ public class JFXPanelScoreView {
 
     private VBox root;
 
+    public ScoreFile getScoreList() {
+        return scoreList;
+    }
 
     public JFXPanel getJfxPanel() {
         return jfxPanel;
