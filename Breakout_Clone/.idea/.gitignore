@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+Breakout_Clone/src/main/java/.idea
+Breakout_Clone/src/main/java/Breakout_Clone.iml
+Breakout_Clone/src/main/java/code/.idea
+Breakout_Clone/src/main/java/code/out.production.code.code/
+*.class
