@@ -15,9 +15,6 @@ abstract public class Brick  {
     public Shape getBrickFace() {
         return brickFace;
     }
-    public static final int DEF_CRACK_DEPTH = 1;
-    public static final int DEF_STEPS = 35;
-
     public static final int UP_IMPACT = 100;
     public static final int DOWN_IMPACT = 200;
     public static final int LEFT_IMPACT = 300;

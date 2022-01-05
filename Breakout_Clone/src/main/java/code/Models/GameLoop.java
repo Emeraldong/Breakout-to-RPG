@@ -5,6 +5,9 @@ import code.Views.GameFrame;
 
 import javax.swing.*;
 
+/**
+ * This class represents the main gameplay loop of the program.
+ */
 public class GameLoop {
 
     private GameFrame gameFrame;
@@ -17,6 +20,12 @@ public class GameLoop {
         return gameTimer;
     }
 
+    /**
+     * This constructor specifies what gameBoard this GameLoop belongs to
+     * and to which gameFrame the gameBoard is in.
+     * @param gameBoard This is the GameBoard that calls this constructor.
+     * @param gameFrame This is the GameFrame that the GameBoard resides in.
+     */
     public GameLoop(GameBoard gameBoard, GameFrame gameFrame){
         this.gameFrame = gameFrame;
         this.gameBoard = gameBoard;
@@ -25,6 +34,11 @@ public class GameLoop {
         message = gameBoard.getMessage();
     }
 
+    /**
+     * This method contains a singular Timer which the entire game runs on.
+     * Scores, Balls and Bricks left are updated as well.
+     * When one of the game ending conditions are met, the Timer is stopped.
+     */
     public void loop(){
         gameTimer = new Timer(10,e ->{
             wall.move();

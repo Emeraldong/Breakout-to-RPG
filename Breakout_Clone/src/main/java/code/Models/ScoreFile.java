@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * This class handles the reading and writing of Files, namely the score file.
+ */
 public class ScoreFile {
 
     private File toReadOrWrite;
@@ -18,12 +21,15 @@ public class ScoreFile {
 
     private String scores;
 
-
     public String[] getHighestScoreStrings() {
         return highestScoreStrings;
     }
 
-
+    /**
+     * This constructs a new ScoreFile object that tries to write a file,
+     * and opens one up if it already existed beforehand.
+     * It also initializes the array of scores.
+     */
     public ScoreFile(){
         highestScores = new int[] {0,0,0,0,0};
         highestScoreStrings = new String[] {"","","","",""};
@@ -44,6 +50,10 @@ public class ScoreFile {
         }
     }
 
+    /**
+     * This method writes Strings to the score file.
+     * @param scoreToWrite
+     */
     public void writeScore(String scoreToWrite){
         scores = scoreToWrite;
         System.out.println(scores);
@@ -61,6 +71,10 @@ public class ScoreFile {
         }
     }
 
+    /**
+     * This method sets the top 5 scores by reading every String in the score file,
+     * isolating the score and then putting the highest ones in an array.
+     */
     public void setHighScores(){
         try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of("scores.txt"))) {
             String line;
