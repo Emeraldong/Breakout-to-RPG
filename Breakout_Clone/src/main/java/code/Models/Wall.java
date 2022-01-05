@@ -6,30 +6,37 @@ import java.util.Random;
 
 public class Wall{
 
-    public static final int LEVELS_COUNT = 4;
-
+    public static final int PADDLE_LENGTH = 75;
+    public static final int PADDLE_HEIGHT = 10;
     private static final int CLAY = 1;
     private static final int STEEL = 2;
     private static final int CEMENT = 3;
+    private static final int INITIAL_BALLS = 3;
+    private static final int INITIAL_LEVEL = -1;
 
     private Random rnd;
     private Rectangle area;
 
     private Brick[] bricks;
-
     private Ball ball;
-
     private Paddle player;
-
     private Brick[][] levels;
-    private int level;
-
     private Point startPoint;
+    private Impacts impacts;
+
+    private int level;
     private int brickCount;
     private int ballCount;
+    private int score;
     private boolean ballLost;
 
-    private int score;
+    public Impacts getImpacts() {
+        return impacts;
+    }
+
+    public Rectangle getArea() {
+        return area;
+    }
 
     public int getLevel() {
         return level;
@@ -57,8 +64,24 @@ public class Wall{
         return player;
     }
 
+    public boolean isBallLost(){
+        return ballLost;
+    }
+
+    public void setBallCount(int ballCount) {
+        this.ballCount = ballCount;
+    }
+
+    public void setBrickCount(int brickCount) {
+        this.brickCount = brickCount;
+    }
+
     public void setBallXSpeed(int s){
         ball.setXSpeed(s);
+    }
+
+    public void setBallLost(boolean ballLost) {
+        this.ballLost = ballLost;
     }
 
     public void setBallYSpeed(int s){
@@ -69,87 +92,26 @@ public class Wall{
         this.ball = ball;
     }
 
-    public boolean isBallLost(){
-        return ballLost;
-    }
-
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
         InitializeGame gameInitializer = new InitializeGame(this);
         levels = gameInitializer.makeLevels(drawArea,brickCount,lineCount,brickDimensionRatio);
-        level = -1;
-
-        ballCount = 3;
+        level = INITIAL_LEVEL;
+        ballCount = INITIAL_BALLS;
         ballLost = false;
-
         rnd = new Random();
-
         gameInitializer.makeBall(ballPos);
-        player = new Paddle((Point) ballPos.clone(),150,10, drawArea);
+        player = new Paddle((Point) ballPos.clone(),PADDLE_LENGTH,PADDLE_HEIGHT, drawArea);
         ballReset();
         area = drawArea;
-
         score = 0;
-
+        impacts = new Impacts(this);
     }
 
     public void move(){
         player.move();
         ball.move();
-    }
-
-    public void findImpacts(){
-        if(player.impact(ball)){
-            ball.reverseY();
-        }
-        else if(impactWall()){
-            // for efficiency reverse is done into method impactWall because for every brick program checks for horizontal and vertical impacts
-            brickCount--;
-        }
-        else if(impactBorder()) {
-            ball.reverseX();
-        }
-        else if(ball.getPosition().getY() < area.getY()){
-            ball.reverseY();
-        }
-        else if(ball.getPosition().getY() > area.getY() + area.getHeight()){
-            ballCount--;
-            ballLost = true;
-        }
-    }
-
-    public boolean impactWall(){
-        for(Brick b : bricks){
-            switch(b.findImpact(ball)) {
-                //Vertical Impact
-                case Brick.UP_IMPACT:
-                    ball.reverseY();
-                    scoreCalc(b);
-                    return b.setImpact(ball.getDown(), Crack.UP);
-                case Brick.DOWN_IMPACT:
-                    ball.reverseY();
-                    scoreCalc(b);
-                    return b.setImpact(ball.getUp(),Crack.DOWN);
-
-                //Horizontal Impact
-                case Brick.LEFT_IMPACT:
-                    ball.reverseX();
-                    scoreCalc(b);
-                    return b.setImpact(ball.getRight(),Crack.RIGHT);
-                case Brick.RIGHT_IMPACT:
-                    ball.reverseX();
-                    scoreCalc(b);
-                    return b.setImpact(ball.getLeft(),Crack.LEFT);
-            }
-        }
-        return false;
-    }
-
-    public boolean impactBorder(){
-        Point2D p = ball.getPosition();
-        return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
-        //returns true if ball is detected to be outside the play area.
     }
 
     public void ballReset(){    //note to self: try reusing code from the other one
@@ -163,7 +125,8 @@ public class Wall{
             speedY = -rnd.nextInt(3) - 2; //originally without the offset
         }while(speedY == 0);
 
-        ball.setSpeed(speedX,speedY);
+        ball.setXSpeed(speedX);
+        ball.setYSpeed(speedY);
         ballLost = false;
     }
 

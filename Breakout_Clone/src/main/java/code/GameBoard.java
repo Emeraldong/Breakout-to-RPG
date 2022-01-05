@@ -91,7 +91,7 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
         gameTimer = new Timer(10,e ->{
             wall.move();
-            wall.findImpacts();
+            wall.getImpacts().findImpacts();
             message = String.format("Bricks: %d Balls %d Score %d",wall.getBrickCount(),wall.getBallCount(),wall.getScore());
             if(wall.isBallLost()){
                 if(wall.ballEnd()){
