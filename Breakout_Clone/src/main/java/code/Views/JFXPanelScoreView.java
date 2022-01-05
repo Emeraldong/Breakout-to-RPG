@@ -14,6 +14,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * This is a class that shows the high scores.
+ */
 public class JFXPanelScoreView {
 
     private final GameFrame owner;
@@ -34,7 +37,10 @@ public class JFXPanelScoreView {
         return jfxPanel;
     }
 
-
+    /**
+     * This constructs the JFXPanel that shows the scores.
+     * @param gameFrame This is the owner of this JFXPanel.
+     */
     public JFXPanelScoreView(GameFrame gameFrame){
         owner = gameFrame;
         jfxPanel = new JFXPanel();
@@ -45,6 +51,10 @@ public class JFXPanelScoreView {
         controller = new ScoreViewControl(owner);
     }
 
+    /**
+     * This creates the scene on which the scores are displayed.
+     * @return This returns the constructed Scene.
+     */
     private Scene createScene(){
         root = new VBox();
         initializeBackground(root);
@@ -54,7 +64,10 @@ public class JFXPanelScoreView {
 
         return new Scene(root);
     }
-
+    /**
+     * This method initializes the background.
+     * @param root this is the vbox to add the background to.
+     */
     private void initializeBackground(VBox root){
         root.setSpacing(50);
         root.setAlignment(Pos.BOTTOM_CENTER);
@@ -67,6 +80,9 @@ public class JFXPanelScoreView {
 
     }
 
+    /**
+     * This is the method that draws the scores on the screen.
+     */
     public void drawScores(){
         String[] highScoreStrings = scoreList.getHighestScoreStrings();
         Text top1 = new Text("1. "+highScoreStrings[0]);
@@ -87,6 +103,10 @@ public class JFXPanelScoreView {
         root.getChildren().addAll(top1,top2,top3,top4,top5);
     }
 
+    /**
+     * This is the method that styles text.
+     * @param text This is the text to style.
+     */
     private void styleText(Text text){
         Font font = new Font("Serif", 25);
         text.setFont(font);
@@ -105,6 +125,9 @@ public class JFXPanelScoreView {
 
     }
 
+    /**
+     * This resets the scores so that new ones can be displayed.
+     */
     public void resetScreen(){
         root.getChildren().clear();
     }

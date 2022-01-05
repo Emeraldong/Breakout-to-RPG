@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/**
+ * This is the debugging console.
+ */
 public class DebugConsole extends JDialog implements WindowListener{
 
     private static final String TITLE = "Debug Console";
@@ -18,7 +21,12 @@ public class DebugConsole extends JDialog implements WindowListener{
     private final GameBoard gameBoard;
     private final Wall wall;
 
-
+    /**
+     * This constructs a DebugConsole.
+     * @param owner This is the JFrame in which the DebugConsole is made and added.
+     * @param wall  This is the Wall in that the DebugConsole will be able to affect.
+     * @param gameBoard This is the GameBoard that called this constructor.
+     */
     public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
 
         this.wall = wall;
@@ -33,6 +41,9 @@ public class DebugConsole extends JDialog implements WindowListener{
         this.pack();
     }
 
+    /**
+     * This method initializes the DebugConsole.
+     */
     public void initialize(){
         this.setModal(true);
         this.setTitle(TITLE);
@@ -42,7 +53,9 @@ public class DebugConsole extends JDialog implements WindowListener{
         this.setFocusable(true);
     }
 
-
+    /**
+     *This method sets the location of the DebugConsole.
+     */
     public void setLocation(){
         int x = ((owner.getWidth() - this.getWidth()) / 2) + owner.getX();
         int y = ((owner.getHeight() - this.getHeight()) / 2) + owner.getY();
@@ -55,6 +68,10 @@ public class DebugConsole extends JDialog implements WindowListener{
 
     }
 
+    /**
+     * This method will call for a repaint when the window is closing.
+     * @param windowEvent This is an event where the window is closing.
+     */
     @Override
     public void windowClosing(WindowEvent windowEvent) {
         gameBoard.repaint();
@@ -75,6 +92,10 @@ public class DebugConsole extends JDialog implements WindowListener{
 
     }
 
+    /**
+     * This method will allow the player to set the speed of the Ball.
+     * @param windowEvent
+     */
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();

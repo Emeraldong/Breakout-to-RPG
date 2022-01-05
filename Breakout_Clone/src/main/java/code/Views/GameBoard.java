@@ -4,13 +4,13 @@ import code.Controllers.KeyDetector;
 import code.Controllers.MouseDetector;
 import code.Models.GameLoop;
 import code.Models.Wall;
-import code.Views.DebugConsole;
-import code.Views.GameFrame;
-import code.Views.Painter;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This class has many detectors attached to it and owns many other classes.
+ */
 public class GameBoard extends JPanel { //originally used KeyListener, MouseListener and MouseMotionListener also
 
     private static final int DEF_WIDTH = 600;
@@ -64,7 +64,11 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         this.message = message;
     }
 
-
+    /**
+     * This constructs a GameBoard in which a Wall is made and detectors added to itself.
+     * @param owner This is the JFrame the GameBoard is in.
+     * @param myGameFrame This is the GameFrame that constructs the GameBoard.
+     */
     public GameBoard(JFrame owner, GameFrame myGameFrame){
         super();
 
@@ -81,13 +85,15 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         gameLoop = new GameLoop(this,myOwner);
 
 
-        //menuFont = new Font("SansSerif",Font.PLAIN,TEXT_SIZE);
-        //initialize the first level
         wall.nextLevel();
         gameLoop.loop();
 
     }
 
+    /**
+     * This method initializes the GameBoard by adding a painter and setting the size
+     * of the window among other things.
+     */
     public void initialize(){
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
         this.setFocusable(true);
@@ -101,6 +107,9 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         revalidate();
     }
 
+    /**
+     * This method pauses the game when focus is lost on the window.
+     */
     public void onLostFocus(){
         gameLoop.getGameTimer().stop();
         message = "Focus Lost. Press SPACE to resume";

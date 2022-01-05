@@ -10,6 +10,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
+/**
+ * This is a class that shows the main menu.
+ */
 public class JFXPanelMainMenu {
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
@@ -28,10 +31,11 @@ public class JFXPanelMainMenu {
         return jfxPanel;
     }
 
-    public GameFrame getOwner() {
-        return owner;
-    }
 
+    /**
+     * This constructs a main menu screen in javafx, embedded in swing.
+     * @param gameFrame This is the owner of the JFXPanel.
+     */
     public JFXPanelMainMenu(GameFrame gameFrame){
         jfxPanel = new JFXPanel();
         owner = gameFrame;
@@ -41,17 +45,14 @@ public class JFXPanelMainMenu {
         myController = new JavaFXMainMenuController(owner, this);
     }
 
+    /**
+     * This method creates the scene on which buttons and the background are displayed.
+     * @return Returns the constructed scene.
+     */
     private Scene createScene() {
 
         createButtons();
 
-        /*exit.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("Goodbye!");
-                System.exit(0);
-            }
-        });*/
         start.setOnAction(e-> myController.handle(e));
         exit.setOnAction(e-> myController.handle(e));
         tutor.setOnAction(e-> myController.handle(e));
@@ -66,6 +67,11 @@ public class JFXPanelMainMenu {
         return new Scene(root);
     }
 
+    /**
+     * This method loads the main menu text.
+     * @param center this is the vbox in which the text is placed.
+     * @return Returns the main menu text in imageview form.
+     */
     private ImageView loadImages(VBox center){
         Image title = new Image(String.valueOf(getClass().getResource("/Images/mainMenuText.png")));
         ImageView titleResized = new ImageView();
@@ -79,6 +85,10 @@ public class JFXPanelMainMenu {
         return titleResized;
     }
 
+    /**
+     * This method initializes the background.
+     * @param root this is the vbox to add the background to.
+     */
     private void initializeBackground(VBox root){
         root.setSpacing(50);
         root.setAlignment(Pos.BASELINE_CENTER);
@@ -89,10 +99,16 @@ public class JFXPanelMainMenu {
 
     }
 
+    /**
+     * This changes the text of the start button after the game is exited once.
+     */
     public void changeStartText(){
         start.setText("Continue");
     }
 
+    /**
+     * This method creates the Buttons and sets their IDs.
+     */
     private void createButtons(){
         start= new Button("Start");
         exit= new Button("Quit");
