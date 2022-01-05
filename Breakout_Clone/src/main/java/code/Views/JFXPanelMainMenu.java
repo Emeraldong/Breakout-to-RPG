@@ -85,7 +85,7 @@ public class JFXPanelMainMenu {
         root.setSpacing(50);
         root.setAlignment(Pos.BASELINE_CENTER);
         BackgroundSize backgroundSize = new BackgroundSize(1,1,true,true,false,false);
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/field2.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(getClass().getResource("/playfield0.png")),600,450,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
         root.setBackground(background);
 
