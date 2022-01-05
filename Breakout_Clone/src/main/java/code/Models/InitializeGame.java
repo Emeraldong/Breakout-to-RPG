@@ -7,7 +7,7 @@ public class InitializeGame {
 
     private Wall wallPrime;
 
-    public static final int LEVELS_COUNT = 6;
+    public static final int LEVELS_COUNT = 8;
 
     private static final int CLAY = 1;
     private static final int STEEL = 2;
@@ -112,6 +112,8 @@ public class InitializeGame {
         tmp[3] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
         tmp[4] = makeSingleTypeLevel(drawArea,brickCount*2,lineCount*2,brickDimensionRatio,CLAY);
         tmp[5] = makeChessboardLevel(drawArea,brickCount*2,lineCount*2,brickDimensionRatio,CLAY,CEMENT);
+        tmp[6] = makeChessboardLevel(drawArea,brickCount*2,lineCount*2,brickDimensionRatio,CLAY,STEEL);
+        tmp[7] = makeChessboardLevel(drawArea,brickCount*2,lineCount*2,brickDimensionRatio,STEEL,CEMENT);
         return tmp;
     }
 }
