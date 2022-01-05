@@ -12,7 +12,9 @@ import java.io.IOException;
 
 public class LoadPNG {
 
-    private static final int numOfBackgrounds = 5;
+    private static final int NUM_OF_BACKGROUNDS = 5;
+    private static final int LAST_INDEX = 4;
+    private static final int NUM_OF_LEVELS = 8;
     private static final int DEF_HEIGHT = 450;
     private static final int DEF_WIDTH = 600;
 
@@ -65,8 +67,8 @@ public class LoadPNG {
     }
 
     public void initBackgrounds(){
-        backgrounds = new Image[5];
-        for (int i = 0;i < numOfBackgrounds; i++) {
+        backgrounds = new Image[NUM_OF_LEVELS];
+        for (int i = 0;i < NUM_OF_BACKGROUNDS; i++) {
             if(i==0) {
                 try {
                     BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/playfield0.png"));
@@ -129,8 +131,9 @@ public class LoadPNG {
 
     public Image displayBackground(BufferedImage bufferedImage, Graphics2D g2d){
         g2d = bufferedImage.createGraphics();
-        if(level >= numOfBackgrounds){
-            g2d.drawImage(this.backgrounds[numOfBackgrounds-1],0,0,null);
+        if(level >= NUM_OF_BACKGROUNDS){
+            g2d.drawImage(this.backgrounds[LAST_INDEX],0,0,null);
+            return backgrounds[LAST_INDEX];
         }
         else {
             g2d.drawImage(this.backgrounds[level], 0, 0, null);
