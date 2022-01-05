@@ -216,7 +216,6 @@ public class Painter extends JPanel {
             FontRenderContext frc = g2d.getFontRenderContext();
             exitButtonRect = menuFont.getStringBounds(EXIT,frc).getBounds();
             exitButtonRect.setLocation(x,y-exitButtonRect.height);
-            myOwner.setTextContinue(1);
         }
 
         g2d.drawString(EXIT,x,y);

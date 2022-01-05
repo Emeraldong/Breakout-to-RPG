@@ -2,6 +2,7 @@ package code;
 
 import code.Controllers.KeyDetector;
 import code.Controllers.MouseDetector;
+import code.Models.GameLoop;
 import code.Models.Wall;
 import code.Views.DebugConsole;
 import code.Views.GameFrame;
@@ -15,8 +16,6 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
 
-    private Timer gameTimer;
-
     private final Wall wall;
     private final KeyDetector keyDetector;
     private final MouseDetector mouseDetector;
@@ -24,15 +23,15 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
     private final DebugConsole debugConsole;
 
     private final GameFrame myOwner;
+    private GameLoop gameLoop;
 
     private String message;
 
     private boolean showPauseMenu;
 
-    //private Font menuFont;
-
-    private int textContinue;
-
+    public String getMessage() {
+        return message;
+    }
     public Wall getWall() {
         return wall;
     }
@@ -49,8 +48,8 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         return painter;
     }
 
-    public Timer getGameTimer() {
-        return gameTimer;
+    public GameLoop getGameTimer() {
+        return gameLoop;
     }
 
     public DebugConsole getDebugConsole() {
@@ -63,10 +62,6 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public void setTextContinue(int textContinue) {
-        this.textContinue = textContinue;
     }
 
 
@@ -83,50 +78,13 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
         painter = new Painter(this,message);
         debugConsole = new DebugConsole(owner,wall,this);
         this.initialize();
+        gameLoop = new GameLoop(this,myOwner);
 
 
         //menuFont = new Font("SansSerif",Font.PLAIN,TEXT_SIZE);
         //initialize the first level
         wall.nextLevel();
-
-        gameTimer = new Timer(10,e ->{
-            wall.move();
-            wall.getImpacts().findImpacts();
-            message = String.format("Bricks: %d Balls %d Score %d",wall.getBrickCount(),wall.getBallCount(),wall.getScore());
-            if(wall.isBallLost()){
-                if(wall.ballEnd()){
-                    wall.wallReset();
-                    message = "Game over. Your score is "+wall.getScore();
-                    myOwner.getNameEntry().compareScore(wall.getScore());
-                    myOwner.getNameEntry().setScore(wall.getScore());
-                    //myOwner.getScoreFile().writeScore(String.valueOf(wall.getScore()));
-                    wall.resetScore();
-                    myOwner.getCardLayout().show(myOwner.getContentPane(),"gameOver");
-                }
-                wall.ballReset();
-                gameTimer.stop();
-            }
-            else if(wall.isDone()){
-                if(wall.hasLevel()){
-                    message = "Go to Next Level";
-                    gameTimer.stop();
-                    wall.ballReset();
-                    wall.wallReset();
-                    wall.nextLevel();
-                    painter.getLoader().setLevel(wall.getLevel());
-                }
-                else{
-                    message = "ALL WALLS DESTROYED";
-                    gameTimer.stop();
-                    myOwner.getNameEntry().compareScore(wall.getScore());
-                    myOwner.getNameEntry().setScore(wall.getScore());
-                    wall.resetScore();
-                    myOwner.getCardLayout().show(myOwner.getContentPane(),"gameOver");
-                }
-            }
-
-            painter.updater(this, message);
-        });
+        gameLoop.loop();
 
     }
 
@@ -144,7 +102,7 @@ public class GameBoard extends JPanel { //originally used KeyListener, MouseList
     }
 
     public void onLostFocus(){
-        gameTimer.stop();
+        gameLoop.getGameTimer().stop();
         message = "Focus Lost. Press SPACE to resume";
         painter.updater(this,message);
     }
